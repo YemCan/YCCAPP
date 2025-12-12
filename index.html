@@ -3,127 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YCC - Yemeni Canadian Council</title>
+    <meta name="google" content="notranslate">
+    <meta name="googlebot" content="notranslate">
+    <title>Yemeni Canadian Council</title>
     
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#2c5aa0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    
-    <!-- Simple Manifest -->
+    <!-- Add this for PWA support -->
     <link rel="manifest" href="manifest.json">
     
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px 20px;
-            background: #2c5aa0;
-            color: white;
-            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6e 100%);
+            color: white;
+            position: relative;
         }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
+        
+        .loading {
+            text-align: center;
+            margin-bottom: 80px;
         }
-        h1 { font-size: 32px; margin: 20px 0; }
-        button {
-            background: white;
-            color: #2c5aa0;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 25px;
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* LANGUAGE BUTTONS - ADD THIS */
+        .language-buttons {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 100;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
-            margin: 20px;
-            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .status {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .lang-icon {
+            font-weight: bold;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
         }
     </style>
+    
+    <!-- Auto-redirect script -->
+    <script>
+        const savedLang = localStorage.getItem('preferredLang');
+        const browserLang = navigator.language || navigator.userLanguage;
+        
+        // Function to set language and redirect
+        function setLanguage(lang) {
+            localStorage.setItem('preferredLang', lang);
+            if (lang === 'ar') {
+                window.location.href = 'Arabic/index.html';
+            } else {
+                window.location.href = 'English/index.html';
+            }
+        }
+        
+        // Auto-redirect logic
+        if (savedLang === 'ar') {
+            window.location.href = 'Arabic/index.html';
+        } else if (browserLang.startsWith('ar') && !savedLang) {
+            // Arabic browser detected
+            const useArabic = confirm('تريد تصفح الموقع باللغة العربية؟\nDo you want to view the site in Arabic?');
+            if (useArabic) {
+                localStorage.setItem('preferredLang', 'ar');
+                window.location.href = 'Arabic/index.html';
+            } else {
+                localStorage.setItem('preferredLang', 'en');
+                window.location.href = 'English/index.html';
+            }
+        } else {
+            // Default to English
+            localStorage.setItem('preferredLang', 'en');
+            window.location.href = 'English/index.html';
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div style="font-size: 60px;">📱</div>
-        <h1>Yemeni Canadian Council</h1>
-        <p>Community App - Windsor</p>
-        
-        <button onclick="installApp()" id="installBtn">
-            INSTALL APP
-        </button>
-        
-        <div class="status" id="status">
-            Click button above to install
-        </div>
-        
-        <div>
-            <a href="English/" style="color: white; margin: 0 10px;">English</a>
-            <a href="Arabic/" style="color: white; margin: 0 10px;">العربية</a>
-        </div>
+    <div class="loading">
+        <div class="spinner"></div>
+        <h2>Loading...</h2>
+        <p>جاري التحميل...</p>
     </div>
     
+    <!-- Language selection buttons -->
+    <div class="language-buttons">
+        <button class="lang-btn" onclick="setLanguage('en')">
+            <span class="lang-icon">EN</span>
+            <span>English</span>
+        </button>
+        <button class="lang-btn" onclick="setLanguage('ar')">
+            <span class="lang-icon">AR</span>
+            <span>العربية</span>
+        </button>
+    </div>
+    
+    <!-- PWA Service Worker Registration -->
     <script>
-    let deferredPrompt;
-    
-    // Listen for install prompt
-    window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('✅ Install prompt received!');
-        e.preventDefault();
-        deferredPrompt = e;
-        
-        // Show install button
-        document.getElementById('installBtn').style.display = 'block';
-        document.getElementById('status').innerHTML = '✅ Ready to install! Click button above.';
-        
-        // Update button
-        document.getElementById('installBtn').onclick = () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        document.getElementById('status').innerHTML = '✅ App installed successfully!';
-                    }
-                    deferredPrompt = null;
-                });
-            }
-        };
-    });
-    
-    function installApp() {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-        } else {
-            document.getElementById('status').innerHTML = `
-                <div style="text-align: left;">
-                    <p><strong>Manual Installation:</strong></p>
-                    <ol>
-                        <li>Click the <strong>⋮ menu</strong> (top-right of Chrome)</li>
-                        <li>Select <strong>"Install Yemeni Canadian Council"</strong></li>
-                        <li>Or go to: <code>chrome://apps</code> → Add app</li>
-                    </ol>
-                </div>
-            `;
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // Register the service worker from root directory
+                navigator.serviceWorker.register('./sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
         }
-    }
-    
-    // Check if already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-        document.getElementById('status').innerHTML = '✅ App is already installed!';
-        document.getElementById('installBtn').style.display = 'none';
-    }
-    
-    // Show install button after 3 seconds
-    setTimeout(() => {
-        document.getElementById('installBtn').style.display = 'block';
-    }, 3000);
     </script>
 </body>
 </html>

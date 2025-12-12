@@ -1,14 +1,18 @@
 const CACHE_NAME = 'ycc-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/English/index.html',
-  '/English/style.css',
-  '/English/script.js',
-  '/Arabic/index.html',
-  '/Arabic/style.css',
-  '/Arabic/script.js'
+  './',
+  './index.html',
+  './manifest.json',
+  './English/index.html',
+  './English/style.css',
+  './English/script.js',
+  './Arabic/index.html',
+  './Arabic/style.css',
+  './Arabic/script.js',
+  './icons/40.png',
+  './icons/72.png',
+  './icons/120.png',
+  './icons/256.png'
 ];
 
 self.addEventListener('install', event => {
