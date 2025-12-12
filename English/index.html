@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     
     <!-- Favicon - Browser tab logo -->
     <link rel="icon" type="image/png" href="logo2.png">
     <link rel="shortcut icon" href="logo2.png">
     <link rel="apple-touch-icon" href="logo2.png">
+    <!-- Add this line for PWA support -->
+    <link rel="manifest" href="../manifest.json">
 
-    <link rel="manifest" href="manifest.json">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+
+
+<!-- iOS Safari PWA Support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="YCC">
+<link rel="apple-touch-icon" href="./icons/120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./icons/120.png">
+<link rel="apple-touch-icon" sizes="167x167" href="./icons/120.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./icons/120.png">
+
+<!-- Android Chrome PWA Support -->
+<meta name="theme-color" content="#2c5aa0">
+<meta name="mobile-web-app-capable" content="yes">
+
+
     
-    <title>المجلس اليمني الكندي (YCC) - ويندسور</title>
+    <title>Yemeni Canadian Council (YCC) - Windsor</title>
 
     <!-- Google Analytics - REAL Visitor Tracking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL8Q26FH0"></script>
@@ -26,156 +45,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- RTL CSS override -->
-    <style>
-    /* Reset header and nav to LTR - BUT NOT LOGO */
-    .main-header,
-    .header-container,
-    .main-nav,
-    .header-actions,
-    .menu-toggle,
-    .rotator-controls .rotator-btn {
-        direction: ltr !important;
-    }
-    
-    /* Content sections RTL */
-    .main-content-grid,
-    .hero-section,
-    .content-section,
-    .about-grid,
-    .services-mobile-grid,
-    .service-card,
-    .news-grid,
-    .news-card,
-    .resources-grid,
-    .resource-category,
-    .events-controls,
-    .contact-grid,
-    .contact-info,
-    .contact-form-container,
-    .footer-grid,
-    .footer-col,
-    .footer-links,
-    .social-icons {
-        direction: rtl;
-    }
-    
-    /* Fix arrows for RTL */
-    .fa-chevron-left:before {
-        content: "\f054" !important; /* Right arrow */
-    }
-    .fa-chevron-right:before {
-        content: "\f053" !important; /* Left arrow */
-    }
-    
-    /* Text alignment */
-    .hero-title,
-    .hero-description,
-    .section-header h2,
-    .section-subtitle,
-    .about-content p,
-    .news-content h3,
-    .news-content p,
-    .resource-list li,
-    .contact-info p,
-    .footer-description,
-    .footer-bottom p {
-        text-align: right;
-    }
-
-    /* ====================
-       LANGUAGE SWITCHER - FIXED FOR ARABIC
-       ==================== */
-    .language-switcher-header {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        gap: 8px;
-        z-index: 1000;
-        direction: ltr !important; /* Force LTR for buttons */
-    }
-    
-    .lang-switch-btn {
-        padding: 6px 12px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        background: rgba(0, 0, 0, 0.2);
-        color: white;
-        border-radius: 4px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: flex !important;
-        align-items: center;
-        gap: 5px;
-        direction: ltr !important;
-    }
-    
-    .lang-switch-btn:hover {
-        background: rgba(0, 0, 0, 0.4);
-        border-color: rgba(255, 255, 255, 0.6);
-        transform: translateY(-1px);
-    }
-    
-    .lang-switch-btn.active {
-        background: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.8);
-        font-weight: 600;
-    }
-    
-    .lang-switch-btn i {
-        font-size: 12px;
-    }
-    
-    /* Mobile responsive adjustments */
-    @media (max-width: 768px) {
-        .language-switcher-header {
-            position: static;
-            transform: none;
-            margin-left: auto;
-            margin-right: 10px;
-            order: 2;
-        }
-        
-        .lang-switch-btn {
-            padding: 5px 10px;
-            font-size: 13px;
-        }
-    }
-    
-    @media (max-width: 576px) {
-        .language-switcher-header {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            transform: none;
-        }
-        
-        .lang-switch-btn {
-            padding: 4px 8px;
-            font-size: 12px;
-        }
-    }
-    
-    /* FIX FOR LOGO DISPLAY ISSUE */
-    .logo-section {
-        display: flex !important;
-        align-items: center !important;
-    }
-    
-    .header-logo {
-        display: block !important;
-        width: auto !important;
-        height: 50px !important;
-        margin-right: 15px !important;
-    }
+</head>
 
 
-/* === LANGUAGE ROW - MATCH ENGLISH === */
+<style>
+ /* LANGUAGE ROW - Match Arabic exactly */
 .language-row {
     margin-top: 15px !important;
     padding-top: 15px !important;
@@ -193,7 +67,7 @@
     box-sizing: border-box !important;
 }
 
-/* Match English button styles */
+/* EXACT Arabic button copy */
 .lang-switch-btn {
     padding: 6px 12px !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
@@ -246,19 +120,126 @@
 }
 
 
-</style>
 
 
 
-    <!-- ADD THESE META TAGS TO PREVENT GOOGLE TRANSLATION -->
-    <meta name="google" content="notranslate">
-    <meta name="googlebot" content="notranslate">
-    <meta name="google" content="nopagerecrawl">
+        .lang-switch-btn {
+            padding: 6px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .lang-switch-btn:hover {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-1px);
+        }
+        
+        .lang-switch-btn.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+        }
+        
+        .lang-switch-btn i {
+            font-size: 12px;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .language-switcher-header {
+                position: static;
+                transform: none;
+                margin-left: auto;
+                margin-right: 10px;
+                order: 2;
+            }
+            
+            .lang-switch-btn {
+                padding: 5px 10px;
+                font-size: 13px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .language-switcher-header {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                transform: none;
+            }
+            
+            .lang-switch-btn {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+        }
+        
+
+
+
+
+    /* Reset header and nav to LTR */
+    .main-header,
+    .header-container,
+    .logo-section,
+    .header-titles,
+    .main-nav,
+    .header-actions,
+    .menu-toggle,
+    .rotator-controls .rotator-btn {
+        direction: ltr !important;
+    }
     
-    <!-- Also add this for Microsoft browsers -->
-    <meta http-equiv="Content-Language" content="ar">
-    <meta name="robots" content="noai, noimageai">
-</head>
+    /* ADD THIS - Make sure language switcher is visible */
+    .language-switcher-header {
+        direction: ltr !important;
+        position: absolute !important;
+        right: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        display: flex !important;
+        gap: 8px !important;
+        z-index: 1000 !important;
+    }
+    
+    /* Rest of your CSS... */
+
+
+
+
+
+/* Match Arabic logo size exactly */
+    .header-logo {
+        display: block !important;
+        width: auto !important;
+        height: 50px !important;
+        margin-right: 15px !important;
+    }
+    
+    .logo-section img.header-logo {
+        height: 50px !important;
+        width: auto !important;
+        max-width: 150px !important;
+        object-fit: contain !important;
+        display: block !important;
+    }
+        </style>
+
+
+
+
+
 
 <body>
     <!-- YCC Announcement Banner -->
@@ -266,19 +247,17 @@
         <div class="announcement-content">
             <span class="announcement-icon">🎉</span>
             <span class="announcement-text">
-                <strong>مبروك لليمنيين في ويندسور!</strong> تم إطلاق الموقع الإلكتروني الرسمي للمجلس اليمني الكندي في 30 نوفمبر 2025!
+                <strong>Congratulations to all Yemenis in Windsor!</strong> The official YCC website is now live as of November 30, 2025!
             </span>
             <button class="close-announcement" onclick="closeAnnouncement()">×</button>
         </div>
     </div>
 
-    
 
 
 <!-- Header -->
 <header class="main-header">
     <div class="header-container">
-        <!-- Logo and titles remain the same -->
         <div class="logo-section">
             <img src="logo2.png" alt="YCC Logo" class="header-logo">
             <div class="header-titles">
@@ -291,12 +270,12 @@
         <!-- Menu Row -->
         <div class="header-row">
             <nav class="main-nav">
-                <a href="#about"><i class="fas fa-info-circle"></i> من نحن</a>
-                <a href="#canada-yemen"><i class="fas fa-handshake"></i> كندا واليمن</a>
-                <a href="#news"><i class="fas fa-newspaper"></i> الأخبار</a>
-                <a href="#resources"><i class="fas fa-life-ring"></i> المصادر</a>
-                <a href="#events"><i class="fas fa-calendar-alt"></i> الفعاليات</a>
-                <a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+                <a href="#canada-yemen"><i class="fas fa-handshake"></i> Canada-Yemen</a>
+                <a href="#news"><i class="fas fa-newspaper"></i> News</a>
+                <a href="#resources"><i class="fas fa-life-ring"></i> Resources</a>
+                <a href="#events"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             </nav>
             
             <div class="header-actions">
@@ -306,85 +285,108 @@
             </div>
         </div>
 
-        <!-- Language Switcher - UNIFIED VERSION (KEEP THIS ONE) -->
+        <!-- Language Row - SIMPLE VERSION LIKE ARABIC 
         <div class="language-row">
-            <div class="language-container">
-                <!-- Arabic Button -->
-                <button class="lang-switch-btn" 
-                        onclick="switchLanguage('ar')"
-                        data-lang="ar">
-                    <span class="lang-icon">AR</span>
-                    <span class="lang-text">العربية</span>
-                </button>
-                
-                <!-- English Button -->
-                <button class="lang-switch-btn" 
-                        onclick="switchLanguage('en')"
-                        data-lang="en">
-                    <span class="lang-icon">EN</span>
-                    <span class="lang-text">English</span>
-                </button>
-            </div>
-        </div>
+    <div class="language-container">
+        <button class="lang-switch-btn active" 
+                data-lang="en"
+                onclick="window.location.href='index.html'; localStorage.setItem('preferredLang', 'en');">
+            <span class="lang-icon">EN</span>
+        </button>
+        <button class="lang-switch-btn" 
+                data-lang="ar"
+                onclick="window.location.href='../Arabic/index.html'; localStorage.setItem('preferredLang', 'ar');">
+            <span class="lang-icon">AR</span>
+        </button>
     </div>
+</div>
+
+-->
+
+
+
+
+
+<!-- Language Switcher - UNIFIED VERSION -->
+<!-- Language Switcher - QUICK FIX -->
+<div class="language-row">
+    <div class="language-container">
+        <!-- Arabic Button - Direct link -->
+        <a href="../Arabic/index.html" class="lang-switch-btn" data-lang="ar">
+            <span class="lang-icon">AR</span>
+            <span class="lang-text">العربية</span>
+        </a>
+        
+        <!-- English Button - Direct link to root -->
+        <a href="index.html" class="lang-switch-btn active" data-lang="en">
+            <span class="lang-icon">EN</span>
+            <span class="lang-text">English</span>
+        </a>
+    </div>
+</div>
+
+
+
 </header>
 
 
+
+<!-- Your existing content continues below... -->
 
 
     <!-- Welcome Marquee -->
     <div class="welcome-bar">
         <div class="marquee-container">
             <div class="marquee-content">
-                <span class="marquee-item">🌟 مرحباً بكم في المجلس اليمني الكندي - ويندسور 🌟</span>
-                <span class="marquee-item">🎉 سنة جديدة سعيدة 2026 لليمنيين في ويندسور! 🎉</span>
-                <span class="marquee-item">🤝 انضم إلى فعاليات وأنشطة مجتمعنا 🤝</span>
-                <span class="marquee-item">📅 فعاليات قادمة هذا الشهر - تحقق من قسم الفعاليات 📅</span>
+                <span class="marquee-item">🌟 Welcome to Yemeni Canadian Council - Windsor 🌟</span>
+                <span class="marquee-item">🎉 Happy New Year 2026 to all Yemenis in Windsor! 🎉</span>
+                <span class="marquee-item">🤝 Join our community events and activities 🤝</span>
+                <span class="marquee-item">📅 Upcoming events this month - Check our Events section 📅</span>
             </div>
         </div>
     </div>
 
     <!-- Main Grid Layout -->
     <main class="main-grid-container">
-        <!-- Sidebar Grid (RTL for Arabic content) -->
+        <!-- Sidebar Grid -->
         <aside class="sidebar-grid">
             <!-- Prayer Times Card -->
             <div class="grid-card prayer-card">
                 <div class="card-header">
                     <i class="fas fa-mosque"></i>
-                    <h3>أوقات الصلاة <span class="card-subtitle">ويندسور</span></h3>
+                    <h3>Prayer Times <span class="card-subtitle">Windsor</span></h3>
                 </div>
                 <div class="prayer-grid">
                     <div class="prayer-item">
-                        <span class="prayer-name">الفجر</span>
-                        <span class="prayer-time" id="sidebar-fajr">6:18 صباحاً</span>
+                        <span class="prayer-name">Fajr</span>
+                        <span class="prayer-time" id="sidebar-fajr">6:18 AM</span>
                         <span class="prayer-icon">🌅</span>
                     </div>
                     <div class="prayer-item">
-                        <span class="prayer-name">الظهر</span>
-                        <span class="prayer-time" id="sidebar-dhuhr">12:21 ظهراً</span>
+                        <span class="prayer-name">Dhuhr</span>
+                        <span class="prayer-time" id="sidebar-dhuhr">12:21 PM</span>
                         <span class="prayer-icon">☀️</span>
                     </div>
                     <div class="prayer-item">
-                        <span class="prayer-name">العصر</span>
-                        <span class="prayer-time" id="sidebar-asr">2:42 عصراً</span>
+                        <span class="prayer-name">Asr</span>
+                        <span class="prayer-time" id="sidebar-asr">2:42 PM</span>
                         <span class="prayer-icon">⛅</span>
                     </div>
                     <div class="prayer-item">
-                        <span class="prayer-name">المغرب</span>
-                        <span class="prayer-time" id="sidebar-maghrib">5:05 مساءً</span>
+                        <span class="prayer-name">Maghrib</span>
+                        <span class="prayer-time" id="sidebar-maghrib">5:05 PM</span>
                         <span class="prayer-icon">🌇</span>
                     </div>
                     <div class="prayer-item">
-                        <span class="prayer-name">العشاء</span>
-                        <span class="prayer-time" id="sidebar-isha">6:24 مساءً</span>
+                        <span class="prayer-name">Isha</span>
+                        <span class="prayer-time" id="sidebar-isha">6:24 PM</span>
                         <span class="prayer-icon">🌙</span>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <span class="source-text">المصدر: IAA</span>
+                    <span class="source-text">Source: IAA</span>
                     <button class="card-action-btn" onclick="updatePrayerTimes()">
-                        <i class="fas fa-sync-alt"></i> تحديث
+                        <i class="fas fa-sync-alt"></i> Update
                     </button>
                 </div>
             </div>
@@ -393,16 +395,16 @@
             <div class="grid-card weather-card" id="windsor-weather-card">
                 <div class="card-header">
                     <i class="fas fa-cloud-sun"></i>
-                    <h3>طقس ويندسور <span class="weather-location">ويندسور، أونتاريو</span></h3>
-                    <button class="weather-refresh-btn" onclick="refreshWindsorWeather()" title="تحديث الطقس">
+                    <h3>Windsor Weather <span class="weather-location">Windsor, ON</span></h3>
+                    <button class="weather-refresh-btn" onclick="refreshWindsorWeather()" title="Refresh weather">
                         <i class="fas fa-sync-alt"></i>
                     </button>
                 </div>
                 
                 <!-- Current Weather Display -->
                 <div class="weather-main">
-                    <div class="weather-temp loading" id="weather-temp">--°م</div>
-                    <div class="weather-desc loading" id="weather-desc">جاري تحميل بيانات الطقس...</div>
+                    <div class="weather-temp loading" id="weather-temp">--°C</div>
+                    <div class="weather-desc loading" id="weather-desc">Loading Windsor weather...</div>
                     <div class="weather-icon" id="weather-icon">
                         <i class="fas fa-spinner fa-spin"></i>
                     </div>
@@ -410,17 +412,17 @@
                 
                 <!-- Weather Details -->
                 <div class="weather-details">
-                    <div class="weather-item" title="سرعة واتجاه الرياح">
+                    <div class="weather-item" title="Wind speed and direction">
                         <i class="fas fa-wind"></i>
-                        <span class="loading" id="weather-wind">-- كم/س</span>
+                        <span class="loading" id="weather-wind">-- km/h</span>
                     </div>
-                    <div class="weather-item" title="مستوى الرطوبة">
+                    <div class="weather-item" title="Humidity level">
                         <i class="fas fa-tint"></i>
                         <span class="loading" id="weather-humidity">--%</span>
                     </div>
-                    <div class="weather-item" title="درجة الحرارة المحسوسة">
+                    <div class="weather-item" title="Feels like temperature">
                         <i class="fas fa-temperature-low"></i>
-                        <span class="loading" id="weather-feels-like">تشعر بـ --°م</span>
+                        <span class="loading" id="weather-feels-like">Feels like --°C</span>
                     </div>
                 </div>
                 
@@ -428,7 +430,7 @@
                 <div class="card-footer">
                     <div class="datetime-info">
                         <i class="far fa-clock"></i>
-                        <span id="weather-updated">آخر تحديث: --:--</span>
+                        <span id="weather-updated">Updated: --:--</span>
                     </div>
                 </div>
             </div>
@@ -437,129 +439,145 @@
             <div class="grid-card actions-card">
                 <div class="card-header">
                     <i class="fas fa-bolt"></i>
-                    <h3>إجراءات سريعة</h3>
+                    <h3>Quick Actions</h3>
                 </div>
                 <div class="actions-grid">
                     <a href="https://forms.gle/GGt8YYamCJ5oncuRA" target="_blank" class="action-btn membership">
                         <i class="fas fa-user-plus"></i>
-                        <span>انضم كعضو</span>
+                        <span>Become a Member</span>
                     </a>
                     <button class="action-btn donate" onclick="showDonationModal()">
                         <i class="fas fa-heart"></i>
-                        <span>تبرع</span>
+                        <span>Make Donation</span>
                     </button>
                     <button class="action-btn events" onclick="scrollToSection('events')">
                         <i class="fas fa-calendar-alt"></i>
-                        <span>عرض الفعاليات</span>
+                        <span>View Events</span>
                     </button>
                     <button class="action-btn resources" onclick="scrollToSection('resources')">
                         <i class="fas fa-life-ring"></i>
-                        <span>احصل على الدعم</span>
+                        <span>Get Support</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Science & Education Card -->
-            <div class="grid-card education-card">
-                <div class="card-header">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>العلوم والتعليم <span class="card-subtitle">منظمات عربية</span></h3>
-                </div>
-                <div class="actions-grid">
-                    <a href="https://alecso.org/nsite/ar/" target="_blank" class="action-btn alecso">
-                        <i class="fas fa-language"></i>
-                        <span>الألكسو</span>
-                        <span class="arabic-sub">المنظمة العربية للتربية والثقافة والعلوم</span>
-                    </a>
-                    <a href="https://icesco.org/ar/" target="_blank" class="action-btn icesco">
-                        <i class="fas fa-microscope"></i>
-                        <span>الإيسيسكو</span>
-                        <span class="arabic-sub">منظمة العالم الإسلامي للتربية والعلوم والثقافة</span>
-                    </a>
-                </div>
-                <div class="card-footer">
-                    <span class="source-text">دولي</span>
-                    <span class="update-text">محتوى عربي</span>
-                </div>
-            </div>
-
-            <!-- Ontario Resources Card -->
-            <div class="grid-card resources-card">
-                <div class="card-header">
-                    <i class="fas fa-briefcase"></i>
-                    <h3>موارد أونتاريو <span class="card-subtitle">وظائف وخدمات</span></h3>
-                </div>
-                <div class="actions-grid">
-                    <a href="https://www.ontario.ca/page/government-ontario" target="_blank" class="action-btn ontario-gov">
-                        <i class="fas fa-landmark"></i>
-                        <span>حكومة أونتاريو</span>
-                        <span class="link-url">ontario.ca</span>
-                    </a>
-                    <a href="https://www.jobbank.gc.ca/browsejobs/province/ON" target="_blank" class="action-btn job-search">
-                        <i class="fas fa-search"></i>
-                        <span>بنك الوظائف</span>
-                        <span class="link-url">jobbank.gc.ca</span>
-                    </a>
-                </div>
-                <div class="card-footer">
-                    <span class="source-text">موارد رسمية</span>
-                    <span class="update-text">محدث يومياً</span>
-                </div>
-            </div>
-
-            <!-- News Portals Card -->
-            <div class="grid-card news-portal-card">
-                <div class="card-header">
-                    <i class="fas fa-globe"></i>
-                    <h3>أخبار سريعة <span class="card-subtitle">مصادر رسمية</span></h3>
-                </div>
-                <div class="actions-grid">
-                    <!-- Ontario News -->
-                    <a href="https://www.cbc.ca/news/canada/toronto" target="_blank" class="action-btn cbc-news">
-                        <i class="fas fa-broadcast-tower"></i>
-                        <span>أخبار CBC تورونتو</span>
-                        <span class="link-url">cbc.ca/toronto</span>
-                    </a>
+           
                     
-                    <!-- Windsor News -->
-                    <a href="https://windsor.ctvnews.ca/" target="_blank" class="action-btn windsor-news">
-                        <i class="fas fa-city"></i>
-                        <span>أخبار CTV ويندسور</span>
-                        <span class="link-url">ctvnews.ca/windsor</span>
-                    </a>
-                    
-                    <!-- Arabic News -->
-                    <a href="https://www.aljazeera.net/" target="_blank" class="action-btn arabic-news">
-                        <i class="fas fa-language"></i>
-                        <span>الجزيرة العربية</span>
-                        <span class="link-url">aljazeera.net</span>
-                    </a>
-                </div>
-            </div>
 
-            <!-- Community Stats Card -->
+        <!-- Science & Education Card -->
+        <div class="grid-card education-card">
+            <div class="card-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Science & Education <span class="card-subtitle">Arab Organizations</span></h3>
+            </div>
+            <div class="actions-grid">
+                <a href="https://alecso.org/nsite/ar/" target="_blank" class="action-btn alecso">
+                    <i class="fas fa-language"></i>
+                    <span>ALECSO</span>
+                    <span class="arabic-sub">المنظمة العربية للتربية والثقافة والعلوم</span>
+                </a>
+                <a href="https://icesco.org/ar/" target="_blank" class="action-btn icesco">
+                    <i class="fas fa-microscope"></i>
+                    <span>ICESCO</span>
+                    <span class="arabic-sub">منظمة العالم الإسلامي للتربية والعلوم والثقافة</span>
+                </a>
+            </div>
+            <div class="card-footer">
+                <span class="source-text">International</span>
+                <span class="update-text">Arabic Content</span>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!-- Ontario Resources Card -->
+        <div class="grid-card resources-card">
+            <div class="card-header">
+                <i class="fas fa-briefcase"></i>
+                <h3>Ontario Resources <span class="card-subtitle">Jobs & Services</span></h3>
+            </div>
+            <div class="actions-grid">
+                <a href="https://www.ontario.ca/page/government-ontario" target="_blank" class="action-btn ontario-gov">
+                    <i class="fas fa-landmark"></i>
+                    <span>Ontario Government</span>
+                    <span class="link-url">ontario.ca</span>
+                </a>
+                <a href="https://www.jobbank.gc.ca/browsejobs/province/ON" target="_blank" class="action-btn job-search">
+                    <i class="fas fa-search"></i>
+                    <span>Job Bank Ontario</span>
+                    <span class="link-url">jobbank.gc.ca</span>
+                </a>
+            </div>
+            <div class="card-footer">
+                <span class="source-text">Official Resources</span>
+                <span class="update-text">Updated Daily</span>
+            </div>
+        </div>
+
+
+        <!-- News Portals Card -->
+        <div class="grid-card news-portal-card">
+            <div class="card-header">
+                <i class="fas fa-globe"></i>
+                <h3>Quick News <span class="card-subtitle">Official Sources</span></h3>
+            </div>
+           
+            <div class="actions-grid">
+                <!-- Ontario News -->
+                <a href="https://www.cbc.ca/news/canada/toronto" target="_blank" class="action-btn cbc-news">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <span>CBC Toronto News</span>
+                    <span class="link-url">cbc.ca/toronto</span>
+                </a>
+                
+                <!-- Windsor News -->
+                <a href="https://windsor.ctvnews.ca/" target="_blank" class="action-btn windsor-news">
+                    <i class="fas fa-city"></i>
+                    <span>CTV Windsor News</span>
+                    <span class="link-url">ctvnews.ca/windsor</span>
+                </a>
+                
+                <!-- Arabic News -->
+                <a href="https://www.aljazeera.net/" target="_blank" class="action-btn arabic-news">
+                    <i class="fas fa-language"></i>
+                    <span>Al Jazeera Arabic</span>
+                    <span class="link-url">aljazeera.net</span>
+                </a>
+                                 
+          </div>
+
+        </div>
+
+
+ <!-- Community Stats Card -->
             <div class="grid-card stats-card">
                 <div class="card-header">
                     <i class="fas fa-users"></i>
-                    <h3>إحصائيات المجتمع</h3>
+                    <h3>Community Stats</h3>
                 </div>
+               
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-icon">
                             <i class="fas fa-user-friends"></i>
                         </div>
                         <div class="stat-content">
-                            <div class="stat-number">+50</div>
-                            <div class="stat-label">عضو</div>
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Members</div>
                         </div>
                     </div>
+                   
                     <div class="stat-item">
                         <div class="stat-icon">
                             <i class="fas fa-calendar-check"></i>
                         </div>
                         <div class="stat-content">
-                            <div class="stat-number">+10</div>
-                            <div class="stat-label">فعالية</div>
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Events</div>
                         </div>
                     </div>
                     <div class="stat-item">
@@ -567,8 +585,8 @@
                             <i class="fas fa-home"></i>
                         </div>
                         <div class="stat-content">
-                            <div class="stat-number">+30</div>
-                            <div class="stat-label">أسرة</div>
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Families</div>
                         </div>
                     </div>
                     <div class="stat-item">
@@ -577,27 +595,33 @@
                         </div>
                         <div class="stat-content">
                             <div class="stat-number">2025</div>
-                            <div class="stat-label">سنة التأسيس</div>
+                            <div class="stat-label">Founded</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </aside>
+
+              
+
+       </aside>
+
+
+
         
-        <!-- Main Content Grid (RTL for Arabic content) -->
+        <!-- Main Content Grid -->
         <section class="main-content-grid">
             <!-- Hero Section -->
             <section class="hero-section">
                 <div class="hero-grid">
                     <div class="hero-content">
-                        <h2 class="hero-title">بناء الجسور بين الثقافات</h2>
-                        <p class="hero-description">ربط ودعم المجتمع اليمني في ويندسور، أونتاريو مع الحفاظ على تراثنا الثري والمساهمة في المجتمع الكندي.</p>
+                        <h2 class="hero-title">Building Bridges Between Cultures</h2>
+                        <p class="hero-description">Connecting and supporting the Yemeni Council in Windsor, Ontario while preserving our rich heritage and contributing to Canadian society.</p>
                         <div class="hero-buttons">
                             <a href="#about" class="btn btn-primary">
-                                <i class="fas fa-book"></i> اعرف المزيد
+                                <i class="fas fa-book"></i> Learn More
                             </a>
                             <a href="#contact" class="btn btn-secondary">
-                                <i class="fas fa-handshake"></i> شارك معنا
+                                <i class="fas fa-handshake"></i> Get Involved
                             </a>
                         </div>
                     </div>
@@ -635,200 +659,208 @@
             <!-- About Section -->
             <section id="about" class="content-section">
                 <div class="section-header">
-                    <h2><i class="fas fa-info-circle"></i> من نحن</h2>
-                    <p class="section-subtitle">مهمتنا ورؤيتنا</p>
+                    <h2><i class="fas fa-info-circle"></i> About Us</h2>
+                    <p class="section-subtitle">Our Mission & Vision</p>
                 </div>
                 <div class="about-grid">
                     <div class="about-content">
-                        <p>المجلس اليمني الكندي (YCC) مخصص لربط ودعم اليمنيين المقيمين في كندا، مع التركيز على ويندسور والمناطق المحيطة. نهدف إلى الحفاظ على الثقافة اليمنية، وتعزيز المشاركة المجتمعية، وتوفير الفرص التعليمية والاجتماعية لجميع الأعضاء.</p>
-                        <p>يتكون مجتمعنا من محترفين وطلاب وعائلات يساهمون إيجابياً في المجتمع الكندي مع الحفاظ على روابط قوية بالتراث اليمني.</p>
+                        <p>The Yemeni Canadian Council (YCC) is dedicated to connecting and supporting Yemenis living in Canada, with a focus on Windsor and surrounding areas. We aim to preserve Yemeni culture, promote community engagement, and provide educational and social opportunities for all members.</p>
+                        <p>Our community includes professionals, students, and families who contribute positively to Canadian society while maintaining strong ties to Yemeni heritage.</p>
                         <div class="about-actions">
                             <a href="https://en.wikipedia.org/wiki/Yemeni_Canadians" target="_blank" class="btn btn-outline">
-                                <i class="fas fa-book-open"></i> اليمنيون في كندا
+                                <i class="fas fa-book-open"></i> Yemenis in Canada
                             </a>
                             <a href="https://www.citywindsor.ca" target="_blank" class="btn btn-outline">
-                                <i class="fas fa-city"></i> مدينة ويندسور
+                                <i class="fas fa-city"></i> Windsor City
                             </a>
                         </div>
                     </div>
                     <div class="about-stats">
                         <div class="stat-highlight">
-                            <div class="highlight-number">+15</div>
-                            <div class="highlight-text">سنة من الخدمة المجتمعية</div>
+                            <div class="highlight-number">15+</div>
+                            <div class="highlight-text">Years of Community Service</div>
                         </div>
                         <div class="stat-highlight">
-                            <div class="highlight-number">+25</div>
-                            <div class="highlight-text">فعالية ثقافية سنوياً</div>
+                            <div class="highlight-number">25+</div>
+                            <div class="highlight-text">Cultural Events Yearly</div>
                         </div>
                         <div class="stat-highlight">
                             <div class="highlight-number">100%</div>
-                            <div class="highlight-text">تعتمد على المتطوعين</div>
+                            <div class="highlight-text">Volunteer Driven</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Canada-Yemen Section -->
-            <section id="canada-yemen" class="content-section bg-alt">
-                <div class="section-header">
-                    <h2><i class="fas fa-handshake"></i> العلاقات بين كندا واليمن</h2>
-                    <p class="section-subtitle">الخدمات والروابط</p>
+
+
+
+          <!-- Canada-Yemen Section - MOBILE OPTIMIZED -->
+<section id="canada-yemen" class="content-section bg-alt">
+    <div class="section-header">
+        <h2><i class="fas fa-handshake"></i> Canada & Yemen Relations</h2>
+        <p class="section-subtitle">Services and Connections</p>
+    </div>
+    
+    <div class="services-mobile-grid">
+        <!-- Travel Advisory Card -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon travel">
+                    <i class="fas fa-plane-departure"></i>
                 </div>
-                <div class="services-mobile-grid">
-                    <!-- Travel Advisory Card -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon travel">
-                                <i class="fas fa-plane-departure"></i>
-                            </div>
-                            <h3>تحديثات النصائح للسفر</h3>
-                            <span class="service-status status-danger">تجنب السفر</span>
-                        </div>
-                        <div class="service-content">
-                            <p><strong>كندا → اليمن:</strong> تجنب جميع السفر بسبب النزاع المستمر والمخاطر الأمنية.</p>
-                            <p><strong>اليمن → كندا:</strong> تأشيرة مطلوبة، الاتصال عبر دول ثالثة.</p>
-                            <div class="service-links">
-                                <a href="https://travel.gc.ca/destinations/yemen" target="_blank" class="service-link">
-                                    <i class="fas fa-external-link-alt"></i> النصائح الرسمية للسفر
-                                </a>
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank" class="service-link">
-                                    <i class="fas fa-file-alt"></i> متطلبات زيارة كندا
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Emergency Contacts Card -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon emergency">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <h3>جهات الاتصال للطوارئ</h3>
-                            <span class="service-status status-warning">انقر للاتصال</span>
-                        </div>
-                        <div class="service-content">
-                            <div class="contact-list-mobile">
-                                <a href="tel:911" class="contact-item emergency-call">
-                                    <i class="fas fa-ambulance"></i>
-                                    <div>
-                                        <strong>طوارئ 911</strong>
-                                        <span>الشرطة، الإطفاء، الإسعاف</span>
-                                    </div>
-                                </a>
-                                <a href="tel:16137894477" class="contact-item">
-                                    <i class="fas fa-flag"></i>
-                                    <div>
-                                        <strong>السفارة اليمنية</strong>
-                                        <span>(613) 789-4477</span>
-                                    </div>
-                                </a>
-                                <a href="tel:16139968885" class="contact-item">
-                                    <i class="fas fa-globe-americas"></i>
-                                    <div>
-                                        <strong>الشؤون العالمية</strong>
-                                        <span>1-613-996-8885</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Document Services Card -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon documents">
-                                <i class="fas fa-file-alt"></i>
-                            </div>
-                            <h3>خدمات المستندات</h3>
-                            <span class="service-status status-info">مساعدة متاحة</span>
-                        </div>
-                        <div class="service-content">
-                            <div class="doc-services-list">
-                                <div class="doc-service">
-                                    <strong><i class="fas fa-passport"></i> جوازات السفر اليمنية</strong>
-                                    <a href="https://www.yemenembassy.ca/eng/" target="_blank">السفارة اليمنية أوتاوا</a>
-                                </div>
-                                <div class="doc-service">
-                                    <strong><i class="fas fa-file-contract"></i> المستندات الكندية</strong>
-                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html" target="_blank">خدمة كندا</a>
-                                </div>
-                                <div class="doc-service">
-                                    <strong><i class="fas fa-globe-americas"></i> التأشيرات والتصاريح</strong>
-                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank">IRCC عبر الإنترنت</a>
-                                </div>
-                            </div>
-                            <div class="service-note">
-                                <i class="fas fa-info-circle"></i> يقدم المجلس اليمني الكندي المساعدة في ترجمة المستندات والتوثيق
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-footer">
-                    <a href="https://www.international.gc.ca/country-pays/yemen/index.aspx?lang=eng" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-external-link-alt"></i> الوصول إلى بوابة الخدمات الكاملة
+                <h3>Travel Advisory Updates</h3>
+                <span class="service-status status-danger">Avoid Travel</span>
+            </div>
+            <div class="service-content">
+                <p><strong>Canada → Yemen:</strong> Avoid all travel due to ongoing conflict and security risks.</p>
+                <p><strong>Yemen → Canada:</strong> Visa required, connect via third countries.</p>
+                <div class="service-links">
+                    <a href="https://travel.gc.ca/destinations/yemen" target="_blank" class="service-link">
+                        <i class="fas fa-external-link-alt"></i> Official Travel Advisory
+                    </a>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank" class="service-link">
+                        <i class="fas fa-file-alt"></i> Visit Canada Requirements
                     </a>
                 </div>
-            </section>
+            </div>
+        </div>
+        
+        <!-- Emergency Contacts Card -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon emergency">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3>Emergency Contacts</h3>
+                <span class="service-status status-warning">Tap to Call</span>
+            </div>
+            <div class="service-content">
+                <div class="contact-list-mobile">
+                    <a href="tel:911" class="contact-item emergency-call">
+                        <i class="fas fa-ambulance"></i>
+                        <div>
+                            <strong>911 Emergency</strong>
+                            <span>Police, Fire, Ambulance</span>
+                        </div>
+                    </a>
+                    <a href="tel:16137894477" class="contact-item">
+                        <i class="fas fa-flag"></i>
+                        <div>
+                            <strong>Yemeni Embassy</strong>
+                            <span>(613) 789-4477</span>
+                        </div>
+                    </a>
+                    <a href="tel:16139968885" class="contact-item">
+                        <i class="fas fa-globe-americas"></i>
+                        <div>
+                            <strong>Global Affairs</strong>
+                            <span>1-613-996-8885</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Document Services Card -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon documents">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Document Services</h3>
+                <span class="service-status status-info">Assistance Available</span>
+            </div>
+            <div class="service-content">
+                <div class="doc-services-list">
+                    <div class="doc-service">
+                        <strong><i class="fas fa-passport"></i> Yemeni Passports</strong>
+                        <a href="https://www.yemenembassy.ca/eng/" target="_blank">Yemeni Embassy Ottawa</a>
+                    </div>
+                    <div class="doc-service">
+                        <strong><i class="fas fa-file-contract"></i> Canadian Documents</strong>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html" target="_blank">Service Canada</a>
+                    </div>
+                    <div class="doc-service">
+                        <strong><i class="fas fa-globe-americas"></i> Visas & Permits</strong>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank">IRCC Online</a>
+                    </div>
+                </div>
+                <div class="service-note">
+                    <i class="fas fa-info-circle"></i> YCC provides assistance with document translation and notarization
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-footer">
+        <a href="https://www.international.gc.ca/country-pays/yemen/index.aspx?lang=eng" target="_blank" class="btn btn-primary">
+            <i class="fas fa-external-link-alt"></i> Access Full Services Portal
+        </a>
+    </div>
+</section>
+
+
+
 
             <!-- News Section -->
             <section id="news" class="content-section">
                 <div class="section-header">
-                    <h2><i class="fas fa-newspaper"></i> آخر الأخبار</h2>
-                    <p class="section-subtitle">ابق على اطلاع بالأخبار المتعلقة بالمجتمع</p>
+                    <h2><i class="fas fa-newspaper"></i> Latest News</h2>
+                    <p class="section-subtitle">Stay updated with community-relevant news</p>
                 </div>
                 <div class="news-grid">
                     <div class="news-card">
                         <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
-                        <div class="news-tag">الهجرة</div>
+                        <div class="news-tag">Immigration</div>
                         <div class="news-content">
-                            <h3>تحديثات الهجرة الكندية</h3>
-                            <p>أحدث التغييرات في سياسات الهجرة الكندية التي قد تؤثر على القادمين الجدد وعائلاتهم.</p>
+                            <h3>Canadian Immigration Updates</h3>
+                            <p>Latest changes to Canadian immigration policies that may affect newcomers and their families.</p>
                             <div class="news-meta">
-                                <span class="news-source">أخبار CBC</span>
-                                <span class="news-date">ديسمبر 1, 2025</span>
+                                <span class="news-source">CBC News</span>
+                                <span class="news-date">Dec 1, 2025</span>
                             </div>
                             <a href="https://www.cicnews.com" target="_blank" class="btn btn-small">
-                                اقرأ المقال <i class="fas fa-arrow-right"></i>
+                                Read Article <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
                     
                     <div class="news-card">
-                        <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop&q=80')"></div>
-                        <div class="news-tag">المجتمع</div>
-                        <div class="news-content">
-                            <h3>الفعاليات المجتمعية في ويندسور</h3>
-                            <p>المهرجانات الثقافية القادمة والتجمعات المجتمعية في منطقة ويندسور لجميع الأعمار.</p>
-                            <div class="news-meta">
-                                <span class="news-source">أخبار Global</span>
-                                <span class="news-date">نوفمبر 28, 2025</span>
-                            </div>
-                            <a href="https://globalnews.ca/tag/windsor/" target="_blank" class="btn btn-small">
-                                اقرأ المقال <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
+    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop&q=80')"></div>
+    <div class="news-tag">Community</div>
+    <div class="news-content">
+        <h3>Community Events in Windsor</h3>
+        <p>Upcoming cultural festivals and community gatherings in the Windsor area for all ages.</p>
+        <div class="news-meta">
+            <span class="news-source">Global News</span>
+            <span class="news-date">Nov 28, 2025</span>
+        </div>
+        <a href="https://globalnews.ca/tag/windsor/" target="_blank" class="btn btn-small">
+            Read Article <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
                     
                     <div class="news-card">
                         <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
-                        <div class="news-tag">الثقافة</div>
+                        <div class="news-tag">Culture</div>
                         <div class="news-content">
-                            <h3>التراث الثقافي اليمني</h3>
-                            <p>الحفاظ على التقاليد اليمنية والاحتفاء بها في الشتات الكندي من خلال الفنون والتعليم.</p>
+                            <h3>Yemeni Cultural Heritage</h3>
+                            <p>Preserving and celebrating Yemeni traditions in the Canadian diaspora through arts and education.</p>
                             <div class="news-meta">
-                                <span class="news-source">اليمن تايمز</span>
-                                <span class="news-date">نوفمبر 25, 2025</span>
+                                <span class="news-source">Yemen Times</span>
+                                <span class="news-date">Nov 25, 2025</span>
                             </div>
                             <a href="https://www.yementimes.com" target="_blank" class="btn btn-small">
-                                اقرأ المقال <i class="fas fa-arrow-right"></i>
+                                Read Article <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="section-footer">
                     <a href="https://www.cbc.ca/news/canada/windsor" target="_blank" class="btn btn-outline">
-                        <i class="fas fa-newspaper"></i> عرض كل الأخبار
+                        <i class="fas fa-newspaper"></i> View All News
                     </a>
                 </div>
             </section>
@@ -836,25 +868,25 @@
             <!-- Resources Section -->
             <section id="resources" class="content-section bg-alt">
                 <div class="section-header">
-                    <h2><i class="fas fa-life-ring"></i> الموارد والخدمات</h2>
-                    <p class="section-subtitle">الخدمات الأساسية للقادمين الجدد والمقيمين في ويندسور</p>
+                    <h2><i class="fas fa-life-ring"></i> Resources & Services</h2>
+                    <p class="section-subtitle">Essential services for newcomers and residents in Windsor</p>
                 </div>
                 <div class="resources-grid">
                     <div class="resource-category">
                         <div class="category-header">
                             <i class="fas fa-book"></i>
-                            <h3>المكتبة والتعليم</h3>
+                            <h3>Library & Education</h3>
                         </div>
                         <ul class="resource-list">
                             <li>
                                 <i class="fas fa-book-reader"></i>
-                                <a href="https://windsorpubliclibrary.com" target="_blank">مكتبة ويندسور العامة (WPL)</a>
-                                <p>الوصول إلى الكتب، واي فاي مجاني، برامج مجتمعية، ودعم الاستقرار.</p>
+                                <a href="https://windsorpubliclibrary.com" target="_blank">Windsor Public Library (WPL)</a>
+                                <p>Access to books, free Wi‑Fi, community programs, and settlement support.</p>
                             </li>
                             <li>
                                 <i class="fas fa-user-graduate"></i>
-                                <a href="https://windsorpubliclibrary.com/library-settlement-program/" target="_blank">برنامج الاستقرار في المكتبة</a>
-                                <p>خدمات للقادمين الجدد بما في ذلك الإحالات والدعم المجتمعي.</p>
+                                <a href="https://windsorpubliclibrary.com/library-settlement-program/" target="_blank">Library Settlement Program</a>
+                                <p>Services for newcomers including referrals and community support.</p>
                             </li>
                         </ul>
                     </div>
@@ -862,18 +894,18 @@
                     <div class="resource-category">
                         <div class="category-header">
                             <i class="fas fa-hands-helping"></i>
-                            <h3>الخدمات الاجتماعية</h3>
+                            <h3>Social Services</h3>
                         </div>
                         <ul class="resource-list">
                             <li>
                                 <i class="fas fa-city"></i>
-                                <a href="https://www.citywindsor.ca/residents/social-services" target="_blank">مدينة ويندسور - الخدمات الاجتماعية</a>
-                                <p>دعم التوظيف، المساعدة السكنية، والخدمات الاجتماعية.</p>
+                                <a href="https://www.citywindsor.ca/residents/social-services" target="_blank">City of Windsor – Social Services</a>
+                                <p>Employment support, housing assistance, and social services.</p>
                             </li>
                             <li>
                                 <i class="fas fa-globe-americas"></i>
-                                <a href="https://www.themcc.com" target="_blank">المجلس متعدد الثقافات (MCC)</a>
-                                <p>برامج للمهاجرين، الاندماج المجتمعي، خدمات الدعم.</p>
+                                <a href="https://www.themcc.com" target="_blank">Multicultural Council (MCC)</a>
+                                <p>Programs for immigrants, community integration, support services.</p>
                             </li>
                         </ul>
                     </div>
@@ -881,18 +913,18 @@
                     <div class="resource-category">
                         <div class="category-header">
                             <i class="fas fa-briefcase"></i>
-                            <h3>التوظيف والحكومة</h3>
+                            <h3>Employment & Government</h3>
                         </div>
                         <ul class="resource-list">
                             <li>
                                 <i class="fas fa-building"></i>
-                                <a href="https://www.canada.ca/en/employment-social-development.html" target="_blank">التوظيف والتنمية الاجتماعية كندا</a>
-                                <p>بنك الوظائف، تأمين التوظيف، برامج التدريب.</p>
+                                <a href="https://www.canada.ca/en/employment-social-development.html" target="_blank">Employment and Social Development Canada</a>
+                                <p>Job bank, employment insurance, training programs.</p>
                             </li>
                             <li>
                                 <i class="fas fa-passport"></i>
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank">IRCC - الهجرة الكندية</a>
-                                <p>الخدمات الرسمية للهجرة، التأشيرات، والجنسية.</p>
+                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank">IRCC – Immigration Canada</a>
+                                <p>Official services for immigration, visas, and citizenship.</p>
                             </li>
                         </ul>
                     </div>
@@ -900,43 +932,48 @@
                     <div class="resource-category">
                         <div class="category-header">
                             <i class="fas fa-heartbeat"></i>
-                            <h3>الصحة والاستقرار</h3>
+                            <h3>Health & Settlement</h3>
                         </div>
                         <ul class="resource-list">
                             <li>
                                 <i class="fas fa-stethoscope"></i>
-                                <a href="https://www.ontario.ca/page/health-cards" target="_blank">تأمين الصحة في أونتاريو (OHIP)</a>
-                                <p>التغطية الصحية لسكان أونتاريو.</p>
+                                <a href="https://www.ontario.ca/page/health-cards" target="_blank">Ontario Health Insurance (OHIP)</a>
+                                <p>Health coverage for Ontario residents.</p>
                             </li>
                             <li>
                                 <i class="fas fa-home"></i>
-                                <a href="https://services.settlement.org/en/windsor/settlement-services/" target="_blank">Settlement.Org - ويندسور</a>
-                                <p>دليل خدمات الاستقرار للقادمين الجدد.</p>
+                                <a href="https://services.settlement.org/en/windsor/settlement-services/" target="_blank">Settlement.Org – Windsor</a>
+                                <p>Directory of settlement services for newcomers.</p>
                             </li>
                         </ul>
                     </div>
                 </div>
             </section>
 
+
+
+
+
+
             <!-- Events Section -->
             <section id="events" class="content-section">
                 <div class="section-header">
-                    <h2><i class="fas fa-calendar-alt"></i> الفعاليات القادمة</h2>
-                    <p class="section-subtitle">انضم إلى فعاليات مجتمعنا في ويندسور، أونتاريو</p>
+                    <h2><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
+                    <p class="section-subtitle">Join our community events in Windsor, Ontario</p>
                 </div>
                 
                 <!-- Events Filter Controls -->
                 <div class="events-controls">
                     <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="all">كل الفعاليات</button>
-                        <button class="filter-btn" data-filter="community">المجتمع</button>
-                        <button class="filter-btn" data-filter="cultural">ثقافية</button>
-                        <button class="filter-btn" data-filter="youth">الشباب</button>
-                        <button class="filter-btn" data-filter="support">الدعم</button>
+                        <button class="filter-btn active" data-filter="all">All Events</button>
+                        <button class="filter-btn" data-filter="community">Community</button>
+                        <button class="filter-btn" data-filter="cultural">Cultural</button>
+                        <button class="filter-btn" data-filter="youth">Youth</button>
+                        <button class="filter-btn" data-filter="support">Support</button>
                     </div>
                     <div class="events-actions">
                         <button class="btn btn-outline" id="refreshEvents">
-                            <i class="fas fa-sync-alt"></i> تحديث الفعاليات
+                            <i class="fas fa-sync-alt"></i> Refresh Events
                         </button>
                     </div>
                 </div>
@@ -946,18 +983,18 @@
                     <!-- Events will be loaded dynamically -->
                     <div class="loading-events">
                         <i class="fas fa-spinner fa-spin"></i>
-                        <p>جاري تحميل الفعاليات القادمة...</p>
+                        <p>Loading upcoming events...</p>
                     </div>
                 </div>
                 
                 <!-- Events Status -->
                 <div class="events-status" id="events-status">
-                    <p><i class="fas fa-info-circle"></i> عرض الفعاليات المجتمعية في ويندسور</p>
+                    <p><i class="fas fa-info-circle"></i> Showing community events in Windsor</p>
                 </div>
                 
                 <div class="section-footer">
                     <a href="https://www.eventbrite.ca/d/canada--windsor/events/" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-calendar-plus"></i> عرض المزيد من الفعاليات
+                        <i class="fas fa-calendar-plus"></i> View More Events
                     </a>
                 </div>
             </section>
@@ -965,8 +1002,8 @@
             <!-- Contact Section -->
             <section id="contact" class="content-section bg-alt">
                 <div class="section-header">
-                    <h2><i class="fas fa-envelope"></i> اتصل بنا</h2>
-                    <p class="section-subtitle">تواصل مع المجلس اليمني الكندي</p>
+                    <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+                    <p class="section-subtitle">Get in touch with the Yemeni Canadian Council</p>
                 </div>
                 <div class="contact-grid">
                     <div class="contact-info">
@@ -975,8 +1012,8 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="info-content">
-                                <h4>الموقع</h4>
-                                <p>ويندسور، أونتاريو، كندا</p>
+                                <h4>Location</h4>
+                                <p>Windsor, Ontario, Canada</p>
                             </div>
                         </div>
                         <div class="info-card">
@@ -984,7 +1021,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="info-content">
-                                <h4>البريد الإلكتروني</h4>
+                                <h4>Email</h4>
                                 <p><a href="mailto:ycc@yccouncil.com">ycc@yccouncil.com</a></p>
                             </div>
                         </div>
@@ -993,8 +1030,8 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="info-content">
-                                <h4>الهاتف</h4>
-                                <p>قريباً</p>
+                                <h4>Phone</h4>
+                                <p>Coming Soon</p>
                             </div>
                         </div>
                         <div class="info-card">
@@ -1002,8 +1039,8 @@
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div class="info-content">
-                                <h4>ساعات العمل</h4>
-                                <p>الإثنين-الجمعة: 9 صباحاً - 5 مساءً</p>
+                                <h4>Office Hours</h4>
+                                <p>Mon-Fri: 9 AM - 5 PM</p>
                             </div>
                         </div>
                     </div>
@@ -1012,32 +1049,32 @@
                         <form id="contactForm" action="https://formspree.io/f/mblvoqaq" method="POST">
                             <div class="form-grid">
                                 <div class="form-group">
-                                    <label for="name">الاسم الكامل *</label>
-                                    <input type="text" name="name" id="name" required placeholder="اسمك الكامل">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" name="name" id="name" required placeholder="Your full name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">البريد الإلكتروني *</label>
-                                    <input type="email" name="email" id="email" required placeholder="بريدك.الإلكتروني@مثال.com">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" name="email" id="email" required placeholder="your.email@example.com">
                                 </div>
                                 <div class="form-group full-width">
-                                    <label for="subject">الموضوع *</label>
+                                    <label for="subject">Subject *</label>
                                     <select name="subject" id="subject" required>
-                                        <option value="">اختر موضوعاً</option>
-                                        <option value="general">استفسار عام</option>
-                                        <option value="membership">العضوية</option>
-                                        <option value="events">الفعاليات</option>
-                                        <option value="volunteer">التطوع</option>
-                                        <option value="support">بحاجة إلى دعم</option>
-                                        <option value="other">أخرى</option>
+                                        <option value="">Select a subject</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="membership">Membership</option>
+                                        <option value="events">Events</option>
+                                        <option value="volunteer">Volunteering</option>
+                                        <option value="support">Support Needed</option>
+                                        <option value="other">Other</option>
                                     </select>
                                 </div>
                                 <div class="form-group full-width">
-                                    <label for="message">رسالتك *</label>
-                                    <textarea name="message" id="message" rows="6" required placeholder="اكتب رسالتك هنا..."></textarea>
+                                    <label for="message">Your Message *</label>
+                                    <textarea name="message" id="message" rows="6" required placeholder="Type your message here..."></textarea>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary submit-btn">
-                                <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                                <i class="fas fa-paper-plane"></i> Send Message
                             </button>
                         </form>
                         <p id="formResponse" class="form-response"></p>
@@ -1047,54 +1084,60 @@
         </section>
     </main>
 
-    <!-- Google Analytics Powered Counter -->
-    <div class="ga-counter">
-        <div class="ga-badge">
-            <i class="fab fa-google"></i>
-            <span>تحليلات</span>
-        </div>
-        <div class="ga-content">
-            <h4>تحليلات الموقع نشطة</h4>
-            <p>تتبع الزوار مفعل مع Google Analytics</p>
-            <div class="ga-stats">
-                <div class="ga-stat">
-                    <span class="ga-number" id="gaLive">--</span>
-                    <span class="ga-label">مباشر</span>
-                </div>
-                <div class="ga-stat">
-                    <span class="ga-number" id="gaTotal">--</span>
-                    <span class="ga-label">إجمالي</span>
-                </div>
-                <div class="ga-stat">
-                    <span class="ga-number" id="gaToday">--</span>
-                    <span class="ga-label">اليوم</span>
-                </div>
-            </div>
-            <small>معرف التتبع: G-ELL8Q26FH0</small>
-        </div>
-    </div>
 
-    <!-- Footer -->
+    
+<!-- Google Analytics Powered Counter -->
+<div class="ga-counter">
+    <div class="ga-badge">
+        <i class="fab fa-google"></i>
+        <span>Analytics</span>
+    </div>
+    <div class="ga-content">
+        <h4>Website Analytics Active</h4>
+        <p>Visitor tracking enabled with Google Analytics</p>
+        <div class="ga-stats">
+            <div class="ga-stat">
+                <span class="ga-number" id="gaLive">--</span>
+                <span class="ga-label">Live</span>
+            </div>
+            <div class="ga-stat">
+                <span class="ga-number" id="gaTotal">--</span>
+                <span class="ga-label">Total</span>
+            </div>
+            <div class="ga-stat">
+                <span class="ga-number" id="gaToday">--</span>
+                <span class="ga-label">Today</span>
+            </div>
+        </div>
+        <small>Tracking ID: G-ELL8Q26FH0</small>
+    </div>
+</div>
+
+
+
+    
+    
+        <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-grid">
             <div class="footer-col logo-col">
                 <h3>YCC</h3>
-                <p class="footer-description">ربط المجتمع اليمني في ويندسور، أونتاريو منذ 2025.</p>
+                <p class="footer-description">Connecting the Yemeni Council in Windsor, Ontario since 2025.</p>
             </div>
             
             <div class="footer-col links-col">
-                <h4>روابط سريعة</h4>
+                <h4>Quick Links</h4>
                 <ul class="footer-links">
-                    <li><a href="#about">من نحن</a></li>
-                    <li><a href="#resources">الموارد</a></li>
-                    <li><a href="#events">الفعاليات</a></li>
-                    <li><a href="#news">الأخبار</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             
             <div class="footer-col social-col">
-                <h4>تواصل معنا</h4>
+                <h4>Connect With Us</h4>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/Yccouncil.ycc/" class="social-icon facebook" title="Facebook" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-facebook-f"></i>
@@ -1113,9 +1156,9 @@
                     </a>
                 </div>
                 <div class="newsletter">
-                    <p>اشترك في نشرتنا الإخبارية</p>
+                    <p>Subscribe to our newsletter</p>
                     <div class="newsletter-form">
-                        <input type="email" placeholder="بريدك الإلكتروني">
+                        <input type="email" placeholder="Your email">
                         <button type="submit">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -1124,10 +1167,10 @@
             </div>
             
             <div class="footer-col contact-col">
-                <h4>معلومات الاتصال</h4>
+                <h4>Contact Info</h4>
                 <div class="contact-info">
                     <p><i class="fas fa-envelope"></i> <a href="mailto:ycc@yccouncil.com">ycc@yccouncil.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> ويندسور، أونتاريو، كندا</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Windsor, Ontario, Canada</p>
                 </div>
             </div>
             
@@ -1135,257 +1178,184 @@
             <div class="footer-col barcode-col">
                 <div class="barcode-container">
                     <img src="barcode.png" alt="YCC Barcode" class="footer-barcode">
-                    <p class="barcode-label">امسح لزيارة موقع YCC</p>
+                    <p class="barcode-label">Scan to visit YCC website</p>
                 </div>
             </div>
         </div>
         
         
-
-<!-- Arabic Footer - Clean Version -->
-<div class="footer-bottom" dir="rtl" style="
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px 15px;
-    width: 100%;
-    max-width: 800px;
-    direction: rtl;
-    font-family: 'Tajawal', 'Scheherazade New', sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
-    color: #333;
-    background: #f8f9fa;
-    border-top: 1px solid #ddd;
-">
-    <div style="display: inline-block; text-align: center;">
-        <p style="margin: 10px 0; padding: 0; font-weight: 500;">
-            &copy; ٢٠٢٥ المجلس اليمني الكندي. جميع الحقوق محفوظة.
-        </p>
-        <p style="margin: 10px 0; padding: 0;">
-            <span style="font-weight: 500;">تاريخ النشر:</span> ٣٠ نوفمبر ٢٠٢٥ | 
-            <span style="font-weight: 500;">آخر تحديث:</span> <span id="currentDate">٨ ديسمبر ٢٠٢٥</span>
-        </p>
-        <p style="margin: 10px 0; padding: 0; color: #666;">
-            تصميم، تطوير، وادارة: <span style="font-weight: 600; color: #2c3e50;">عمر صبري</span>
-        </p>
-    </div>
-</div>
         
+        
+        
+        
+        
+    <div class="footer-bottom" style="margin: 0 auto; text-align: center; padding: 20px 0; width: fit-content;">
+    <p style="margin: 5px 0;">&copy; 2025 Yemeni Canadian Council (YCC). All rights reserved.</p>
+    <p style="margin: 5px 0;">Published: November 30, 2025 | Last Updated: <span id="currentDate"></span></p>
+    <p style="margin: 5px 0;">Designed, Developed, and Managed By: Omar Sabri</p>
+</div>    
+        
+        </div>
     </footer>
+
+
+
+
 
     <!-- Donation Modal -->
     <div id="donationModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><i class="fas fa-heart"></i> ادعم مجتمعنا</h3>
+                <h3><i class="fas fa-heart"></i> Support Our Community</h3>
                 <button class="modal-close" onclick="closeDonationModal()">×</button>
             </div>
             <div class="modal-body">
-                <p>تبرعك يساعدنا في دعم المجتمع اليمني في ويندسور من خلال الفعاليات الثقافية والبرامج التعليمية والخدمات المجتمعية.</p>
+                <p>Your donation helps us support the Yemeni Council in Windsor through cultural events, educational programs, and community services.</p>
                 <div class="donation-options">
                     <button class="donation-option">$25</button>
                     <button class="donation-option">$50</button>
                     <button class="donation-option">$100</button>
                     <button class="donation-option">$250</button>
-                    <button class="donation-option">مبلغ آخر</button>
+                    <button class="donation-option">Other</button>
                 </div>
                 <div class="donation-form">
-                    <input type="number" placeholder="أدخل المبلغ المطلوب ($)">
-                    <button class="btn btn-primary">تبرع الآن</button>
+                    <input type="number" placeholder="Enter custom amount ($)">
+                    <button class="btn btn-primary">Donate Now</button>
                 </div>
             </div>
         </div>
     </div>
 
+
+
+
+
     <script>
-        // Mobile Menu Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mainNav = document.querySelector('.main-nav');
-            const body = document.body;
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    const body = document.body;
+    
+    if (menuToggle && mainNav) {
+        // Create hamburger icon bars
+        menuToggle.innerHTML = `
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        `;
+        
+        // Toggle menu on click
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            body.classList.toggle('menu-open');
             
-            if (menuToggle && mainNav) {
-                // Create hamburger icon bars
-                menuToggle.innerHTML = `
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                `;
-                
-                // Toggle menu on click
-                menuToggle.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    mainNav.classList.toggle('active');
-                    menuToggle.classList.toggle('active');
-                    body.classList.toggle('menu-open');
-                    
-                    // Prevent scrolling when menu is open
-                    if (mainNav.classList.contains('active')) {
-                        body.style.overflow = 'hidden';
-                    } else {
-                        body.style.overflow = '';
-                    }
-                });
-                
-                // Close menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-                        mainNav.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                        body.classList.remove('menu-open');
-                        body.style.overflow = '';
-                    }
-                });
-                
-                // Close menu when clicking on a link
-                mainNav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        mainNav.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                        body.classList.remove('menu-open');
-                        body.style.overflow = '';
-                    });
-                });
-                
-                // Close menu on ESC key
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape') {
-                        mainNav.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                        body.classList.remove('menu-open');
-                        body.style.overflow = '';
-                    }
-                });
+            // Prevent scrolling when menu is open
+            if (mainNav.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
             }
-            
-            // Adjust menu for window resize
-            function adjustMenuForScreen() {
-                if (window.innerWidth > 992) {
-                    // Desktop - always show menu
-                    if (mainNav) mainNav.style.display = 'flex';
-                    if (menuToggle) menuToggle.style.display = 'none';
-                    body.style.overflow = '';
-                } else {
-                    // Mobile - hide menu by default, show toggle button
-                    if (mainNav) mainNav.style.display = 'none';
-                    if (menuToggle) menuToggle.style.display = 'block';
-                }
-            }
-            
-            // Run on load and resize
-            window.addEventListener('load', adjustMenuForScreen);
-            window.addEventListener('resize', adjustMenuForScreen);
-            adjustMenuForScreen();
         });
-    </script>
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                body.classList.remove('menu-open');
+                body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when clicking on a link
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                body.classList.remove('menu-open');
+                body.style.overflow = '';
+            });
+        });
+        
+        // Close menu on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                body.classList.remove('menu-open');
+                body.style.overflow = '';
+            }
+        });
+    }
+    
+    // Adjust menu for window resize
+    function adjustMenuForScreen() {
+        if (window.innerWidth > 992) {
+            // Desktop - always show menu
+            if (mainNav) mainNav.style.display = 'flex';
+            if (menuToggle) menuToggle.style.display = 'none';
+            body.style.overflow = '';
+        } else {
+            // Mobile - hide menu by default, show toggle button
+            if (mainNav) mainNav.style.display = 'none';
+            if (menuToggle) menuToggle.style.display = 'block';
+        }
+    }
+    
+    // Run on load and resize
+    window.addEventListener('load', adjustMenuForScreen);
+    window.addEventListener('resize', adjustMenuForScreen);
+    adjustMenuForScreen();
+});
+</script>
+
     
     <script src="script.js"></script>
 
 
-    
 
-<script>
-    // Language switching function
-    function switchLanguage(lang) {
-        console.log('Switching to:', lang);
-        
-        // Save preference
-        localStorage.setItem('preferredLang', lang);
-        
-        // Get current page
-        let currentPath = window.location.pathname;
-        let pathParts = currentPath.split('/');
-        let currentPage = pathParts.pop();
-        
-        if (!currentPage || currentPage === '') {
-            currentPage = 'index.html';
-        }
-        
-        console.log('Current page:', currentPage);
-        console.log('Current path:', currentPath);
-        
-        // Determine target URL
-        let targetUrl = '';
-        const isInEnglishFolder = currentPath.includes('/English/');
-        const isInArabicFolder = currentPath.includes('/Arabic/');
-        
-        if (lang === 'en') {
-            // Switch to English
-            if (isInArabicFolder) {
-                // From Arabic to English
-                targetUrl = '../English/' + (currentPage === 'index.html' ? 'index.html' : currentPage);
-            } else if (isInEnglishFolder) {
-                // Already in English folder
-                targetUrl = currentPage;
-            } else {
-                // From root to English
-                targetUrl = 'English/' + (currentPage === 'index.html' ? 'index.html' : currentPage);
-            }
-        } else if (lang === 'ar') {
-            // Switch to Arabic
-            if (isInEnglishFolder) {
-                // From English to Arabic
-                targetUrl = '../Arabic/' + (currentPage === 'index.html' ? 'index.html' : currentPage);
-            } else if (isInArabicFolder) {
-                // Already in Arabic folder
-                targetUrl = currentPage;
-            } else {
-                // From root to Arabic
-                targetUrl = 'Arabic/' + (currentPage === 'index.html' ? 'index.html' : currentPage);
-            }
-        }
-        
-        console.log('Target URL:', targetUrl);
-        
-        // Redirect if URL is different
-        if (targetUrl && !window.location.href.endsWith(targetUrl)) {
-            window.location.href = targetUrl;
-        } else {
-            console.log('Already on the correct page or invalid target');
-        }
-    }
 
-    // Set active button based on current language
+
+    <script>
     function setActiveLanguageButton() {
-        const isArabic = document.documentElement.lang === 'ar' || 
-                         window.location.href.includes('/Arabic/');
+        const isArabic = window.location.href.includes('/Arabic/');
+        const buttons = document.querySelectorAll('.lang-switch-btn');
         
-        const arabicBtn = document.querySelector('.lang-switch-btn[data-lang="ar"]');
-        const englishBtn = document.querySelector('.lang-switch-btn[data-lang="en"]');
-        
-        if (arabicBtn && englishBtn) {
-            if (isArabic) {
-                arabicBtn.classList.add('active');
-                englishBtn.classList.remove('active');
-            } else {
-                englishBtn.classList.add('active');
-                arabicBtn.classList.remove('active');
+        buttons.forEach(btn => {
+            const lang = btn.getAttribute('data-lang');
+            if (lang) {
+                if ((lang === 'ar' && isArabic) || (lang === 'en' && !isArabic)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
             }
-        }
+        });
     }
 
-    // Initialize on page load
+    // Make sure Arabic button also updates localStorage
     document.addEventListener('DOMContentLoaded', function() {
         setActiveLanguageButton();
-    });
-</script>
-
-
-
-<!-- PWA Service Worker Registration -->
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      // The service worker is in the root directory (../sw.js relative to arabic/index.html)
-      navigator.serviceWorker.register('../sw.js')
-        .then(function(registration) {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, function(err) {
-          console.log('ServiceWorker registration failed: ', err);
+        
+        // Add click handler for Arabic button
+        document.querySelector('[data-lang="ar"]').addEventListener('click', function(e) {
+            localStorage.setItem('preferredLang', 'ar');
+        });
+        
+        // Add click handler for English button  
+        document.querySelector('[data-lang="en"]').addEventListener('click', function(e) {
+            localStorage.setItem('preferredLang', 'en');
         });
     });
-  }
 </script>
 
-</body>
+
+
+
+<script src="language-switcher.js"></script>
+
+    </body>
 </html>
