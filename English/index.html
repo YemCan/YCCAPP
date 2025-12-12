@@ -3,25 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     
     <!-- Favicon - Browser tab logo -->
     <link rel="icon" type="image/png" href="logo2.png">
     <link rel="shortcut icon" href="logo2.png">
     <link rel="apple-touch-icon" href="logo2.png">
-    
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#2c5aa0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="msapplication-TileColor" content="#2c5aa0">
-    
-    <!-- Manifest -->
+    <!-- Add this line for PWA support -->
     <link rel="manifest" href="../manifest.json">
-    
-    <!-- Icons -->
-    <link rel="icon" type="image/png" href="../icons/android/android-launchericon-192-192.png">
-    <link rel="apple-touch-icon" href="../icons/android/android-launchericon-192-192.png">
     
     <title>Yemeni Canadian Council (YCC) - Windsor</title>
 
@@ -38,158 +27,203 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+
+<style>
+ /* LANGUAGE ROW - Match Arabic exactly */
+.language-row {
+    margin-top: 15px !important;
+    padding-top: 15px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    width: 100% !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+.language-container {
+    display: inline-flex !important;
+    gap: 15px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+/* EXACT Arabic button copy */
+.lang-switch-btn {
+    padding: 6px 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    color: white !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    min-width: 60px !important;
+    min-height: 35px !important;
+    box-sizing: border-box !important;
+    font-family: 'Tajawal', sans-serif !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+}
+
+.lang-switch-btn:hover {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-1px) !important;
+}
+
+.lang-switch-btn.active {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 600 !important;
+}
+
+.lang-icon {
+    font-weight: bold !important;
+    font-size: 14px !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .language-container {
+        gap: 10px !important;
+    }
     
-    <style>
-        /* LANGUAGE ROW - Match Arabic exactly */
-        .language-row {
-            margin-top: 15px !important;
-            padding-top: 15px !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-            width: 100% !important;
-            text-align: center !important;
-            box-sizing: border-box !important;
-        }
-        
-        .language-container {
-            display: inline-flex !important;
-            gap: 15px !important;
-            justify-content: center !important;
-            align-items: center !important;
-            box-sizing: border-box !important;
-        }
-        
-        /* EXACT Arabic button copy */
+    .lang-switch-btn {
+        padding: 5px 10px !important;
+        font-size: 13px !important;
+    }
+}
+
+
+
+
+
         .lang-switch-btn {
-            padding: 6px 12px !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-            background: rgba(0, 0, 0, 0.2) !important;
-            color: white !important;
-            border-radius: 4px !important;
-            font-size: 14px !important;
-            font-weight: 500 !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 5px !important;
-            min-width: 60px !important;
-            min-height: 35px !important;
-            box-sizing: border-box !important;
-            font-family: 'Tajawal', sans-serif !important;
-            line-height: 1 !important;
-            text-decoration: none !important;
+            padding: 6px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         .lang-switch-btn:hover {
-            background: rgba(0, 0, 0, 0.4) !important;
-            border-color: rgba(255, 255, 255, 0.6) !important;
-            transform: translateY(-1px) !important;
+            background: rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-1px);
         }
         
         .lang-switch-btn.active {
-            background: rgba(255, 255, 255, 0.2) !important;
-            border-color: rgba(255, 255, 255, 0.8) !important;
-            font-weight: 600 !important;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
         }
         
-        .lang-icon {
-            font-weight: bold !important;
-            font-size: 14px !important;
+        .lang-switch-btn i {
+            font-size: 12px;
         }
         
-        /* PWA Install Button Styles */
-        #installAppBtn {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6e 100%);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 9999;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Mobile */
+        /* Mobile responsive adjustments */
         @media (max-width: 768px) {
-            .language-container {
-                gap: 10px !important;
+            .language-switcher-header {
+                position: static;
+                transform: none;
+                margin-left: auto;
+                margin-right: 10px;
+                order: 2;
             }
             
             .lang-switch-btn {
-                padding: 5px 10px !important;
-                font-size: 13px !important;
-            }
-            
-            #installAppBtn {
-                bottom: 70px;
-                right: 15px;
-                padding: 10px 16px;
+                padding: 5px 10px;
                 font-size: 13px;
             }
         }
         
-        @media (max-width: 480px) {
-            #installAppBtn {
-                bottom: 60px;
+        @media (max-width: 576px) {
+            .language-switcher-header {
+                position: absolute;
+                top: 10px;
                 right: 10px;
-                padding: 8px 14px;
+                transform: none;
+            }
+            
+            .lang-switch-btn {
+                padding: 4px 8px;
                 font-size: 12px;
             }
         }
         
-        /* Reset header and nav to LTR */
-        .main-header,
-        .header-container,
-        .logo-section,
-        .header-titles,
-        .main-nav,
-        .header-actions,
-        .menu-toggle,
-        .rotator-controls .rotator-btn {
-            direction: ltr !important;
-        }
-        
-        /* Match Arabic logo size exactly */
-        .header-logo {
-            display: block !important;
-            width: auto !important;
-            height: 50px !important;
-            margin-right: 15px !important;
-        }
-        
-        .logo-section img.header-logo {
-            height: 50px !important;
-            width: auto !important;
-            max-width: 150px !important;
-            object-fit: contain !important;
-            display: block !important;
-        }
-    </style>
-</head>
+
+
+
+
+    /* Reset header and nav to LTR */
+    .main-header,
+    .header-container,
+    .logo-section,
+    .header-titles,
+    .main-nav,
+    .header-actions,
+    .menu-toggle,
+    .rotator-controls .rotator-btn {
+        direction: ltr !important;
+    }
+    
+    /* ADD THIS - Make sure language switcher is visible */
+    .language-switcher-header {
+        direction: ltr !important;
+        position: absolute !important;
+        right: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        display: flex !important;
+        gap: 8px !important;
+        z-index: 1000 !important;
+    }
+    
+    /* Rest of your CSS... */
+
+
+
+
+
+/* Match Arabic logo size exactly */
+    .header-logo {
+        display: block !important;
+        width: auto !important;
+        height: 50px !important;
+        margin-right: 15px !important;
+    }
+    
+    .logo-section img.header-logo {
+        height: 50px !important;
+        width: auto !important;
+        max-width: 150px !important;
+        object-fit: contain !important;
+        display: block !important;
+    }
+        </style>
+
+
+
+
+
 
 <body>
-    <!-- PWA Install Button -->
-    <button id="installAppBtn">
-        <i class="fas fa-download"></i>
-        Install App
-    </button>
-    
     <!-- YCC Announcement Banner -->
     <div class="ycc-announcement">
         <div class="announcement-content">
@@ -201,54 +235,86 @@
         </div>
     </div>
 
-    <!-- Header -->
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo-section">
-                <img src="logo2.png" alt="YCC Logo" class="header-logo">
-                <div class="header-titles">
-                    <h1>Yemeni Canadian Council <span>(YCC)</span></h1>
-                    <p class="arabic-title">المجلس اليمني الكندي</p>
-                    <p class="header-subtitle">Windsor, Ontario</p>
-                </div>
-            </div>
 
-            <!-- Menu Row -->
-            <div class="header-row">
-                <nav class="main-nav">
-                    <a href="#about"><i class="fas fa-info-circle"></i> About</a>
-                    <a href="#canada-yemen"><i class="fas fa-handshake"></i> Canada-Yemen</a>
-                    <a href="#news"><i class="fas fa-newspaper"></i> News</a>
-                    <a href="#resources"><i class="fas fa-life-ring"></i> Resources</a>
-                    <a href="#events"><i class="fas fa-calendar-alt"></i> Events</a>
-                    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-                </nav>
-                
-                <div class="header-actions">
-                    <button class="menu-toggle" id="menuToggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
 
-            <!-- Language Switcher -->
-            <div class="language-row">
-                <div class="language-container">
-                    <!-- Arabic Button - Direct link -->
-                    <a href="../Arabic/index.html" class="lang-switch-btn" data-lang="ar">
-                        <span class="lang-icon">AR</span>
-                        <span class="lang-text">العربية</span>
-                    </a>
-                    
-                    <!-- English Button - Direct link to root -->
-                    <a href="../index.html" class="lang-switch-btn active" data-lang="en">
-                        <span class="lang-icon">EN</span>
-                        <span class="lang-text">English</span>
-                    </a>
-                </div>
+<!-- Header -->
+<header class="main-header">
+    <div class="header-container">
+        <div class="logo-section">
+            <img src="logo2.png" alt="YCC Logo" class="header-logo">
+            <div class="header-titles">
+                <h1>Yemeni Canadian Council <span>(YCC)</span></h1>
+                <p class="arabic-title">المجلس اليمني الكندي</p>
+                <p class="header-subtitle">Windsor, Ontario</p>
             </div>
         </div>
-    </header>
+
+        <!-- Menu Row -->
+        <div class="header-row">
+            <nav class="main-nav">
+                <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+                <a href="#canada-yemen"><i class="fas fa-handshake"></i> Canada-Yemen</a>
+                <a href="#news"><i class="fas fa-newspaper"></i> News</a>
+                <a href="#resources"><i class="fas fa-life-ring"></i> Resources</a>
+                <a href="#events"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Language Row - SIMPLE VERSION LIKE ARABIC 
+        <div class="language-row">
+    <div class="language-container">
+        <button class="lang-switch-btn active" 
+                data-lang="en"
+                onclick="window.location.href='index.html'; localStorage.setItem('preferredLang', 'en');">
+            <span class="lang-icon">EN</span>
+        </button>
+        <button class="lang-switch-btn" 
+                data-lang="ar"
+                onclick="window.location.href='../Arabic/index.html'; localStorage.setItem('preferredLang', 'ar');">
+            <span class="lang-icon">AR</span>
+        </button>
+    </div>
+</div>
+
+-->
+
+
+
+
+
+<!-- Language Switcher - UNIFIED VERSION -->
+<!-- Language Switcher - QUICK FIX -->
+<div class="language-row">
+    <div class="language-container">
+        <!-- Arabic Button - Direct link -->
+        <a href="../Arabic/index.html" class="lang-switch-btn" data-lang="ar">
+            <span class="lang-icon">AR</span>
+            <span class="lang-text">العربية</span>
+        </a>
+        
+        <!-- English Button - Direct link to root -->
+        <a href="../index.html" class="lang-switch-btn active" data-lang="en">
+            <span class="lang-icon">EN</span>
+            <span class="lang-text">English</span>
+        </a>
+    </div>
+</div>
+
+
+
+</header>
+
+
+
+<!-- Your existing content continues below... -->
+
 
     <!-- Welcome Marquee -->
     <div class="welcome-bar">
@@ -377,86 +443,99 @@
                 </div>
             </div>
 
-            <!-- Science & Education Card -->
-            <div class="grid-card education-card">
-                <div class="card-header">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Science & Education <span class="card-subtitle">Arab Organizations</span></h3>
-                </div>
-                <div class="actions-grid">
-                    <a href="https://alecso.org/nsite/ar/" target="_blank" class="action-btn alecso">
-                        <i class="fas fa-language"></i>
-                        <span>ALECSO</span>
-                        <span class="arabic-sub">المنظمة العربية للتربية والثقافة والعلوم</span>
-                    </a>
-                    <a href="https://icesco.org/ar/" target="_blank" class="action-btn icesco">
-                        <i class="fas fa-microscope"></i>
-                        <span>ICESCO</span>
-                        <span class="arabic-sub">منظمة العالم الإسلامي للتربية والعلوم والثقافة</span>
-                    </a>
-                </div>
-                <div class="card-footer">
-                    <span class="source-text">International</span>
-                    <span class="update-text">Arabic Content</span>
-                </div>
-            </div>
-
-            <!-- Ontario Resources Card -->
-            <div class="grid-card resources-card">
-                <div class="card-header">
-                    <i class="fas fa-briefcase"></i>
-                    <h3>Ontario Resources <span class="card-subtitle">Jobs & Services</span></h3>
-                </div>
-                <div class="actions-grid">
-                    <a href="https://www.ontario.ca/page/government-ontario" target="_blank" class="action-btn ontario-gov">
-                        <i class="fas fa-landmark"></i>
-                        <span>Ontario Government</span>
-                        <span class="link-url">ontario.ca</span>
-                    </a>
-                    <a href="https://www.jobbank.gc.ca/browsejobs/province/ON" target="_blank" class="action-btn job-search">
-                        <i class="fas fa-search"></i>
-                        <span>Job Bank Ontario</span>
-                        <span class="link-url">jobbank.gc.ca</span>
-                    </a>
-                </div>
-                <div class="card-footer">
-                    <span class="source-text">Official Resources</span>
-                    <span class="update-text">Updated Daily</span>
-                </div>
-            </div>
-
-            <!-- News Portals Card -->
-            <div class="grid-card news-portal-card">
-                <div class="card-header">
-                    <i class="fas fa-globe"></i>
-                    <h3>Quick News <span class="card-subtitle">Official Sources</span></h3>
-                </div>
-               
-                <div class="actions-grid">
-                    <!-- Ontario News -->
-                    <a href="https://www.cbc.ca/news/canada/toronto" target="_blank" class="action-btn cbc-news">
-                        <i class="fas fa-broadcast-tower"></i>
-                        <span>CBC Toronto News</span>
-                        <span class="link-url">cbc.ca/toronto</span>
-                    </a>
+           
                     
-                    <!-- Windsor News -->
-                    <a href="https://windsor.ctvnews.ca/" target="_blank" class="action-btn windsor-news">
-                        <i class="fas fa-city"></i>
-                        <span>CTV Windsor News</span>
-                        <span class="link-url">ctvnews.ca/windsor</span>
-                    </a>
-                    
-                    <!-- Arabic News -->
-                    <a href="https://www.aljazeera.net/" target="_blank" class="action-btn arabic-news">
-                        <i class="fas fa-language"></i>
-                        <span>Al Jazeera Arabic</span>
-                        <span class="link-url">aljazeera.net</span>
-                    </a>
-                </div>
-            </div>
 
-            <!-- Community Stats Card -->
+        <!-- Science & Education Card -->
+        <div class="grid-card education-card">
+            <div class="card-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Science & Education <span class="card-subtitle">Arab Organizations</span></h3>
+            </div>
+            <div class="actions-grid">
+                <a href="https://alecso.org/nsite/ar/" target="_blank" class="action-btn alecso">
+                    <i class="fas fa-language"></i>
+                    <span>ALECSO</span>
+                    <span class="arabic-sub">المنظمة العربية للتربية والثقافة والعلوم</span>
+                </a>
+                <a href="https://icesco.org/ar/" target="_blank" class="action-btn icesco">
+                    <i class="fas fa-microscope"></i>
+                    <span>ICESCO</span>
+                    <span class="arabic-sub">منظمة العالم الإسلامي للتربية والعلوم والثقافة</span>
+                </a>
+            </div>
+            <div class="card-footer">
+                <span class="source-text">International</span>
+                <span class="update-text">Arabic Content</span>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!-- Ontario Resources Card -->
+        <div class="grid-card resources-card">
+            <div class="card-header">
+                <i class="fas fa-briefcase"></i>
+                <h3>Ontario Resources <span class="card-subtitle">Jobs & Services</span></h3>
+            </div>
+            <div class="actions-grid">
+                <a href="https://www.ontario.ca/page/government-ontario" target="_blank" class="action-btn ontario-gov">
+                    <i class="fas fa-landmark"></i>
+                    <span>Ontario Government</span>
+                    <span class="link-url">ontario.ca</span>
+                </a>
+                <a href="https://www.jobbank.gc.ca/browsejobs/province/ON" target="_blank" class="action-btn job-search">
+                    <i class="fas fa-search"></i>
+                    <span>Job Bank Ontario</span>
+                    <span class="link-url">jobbank.gc.ca</span>
+                </a>
+            </div>
+            <div class="card-footer">
+                <span class="source-text">Official Resources</span>
+                <span class="update-text">Updated Daily</span>
+            </div>
+        </div>
+
+
+        <!-- News Portals Card -->
+        <div class="grid-card news-portal-card">
+            <div class="card-header">
+                <i class="fas fa-globe"></i>
+                <h3>Quick News <span class="card-subtitle">Official Sources</span></h3>
+            </div>
+           
+            <div class="actions-grid">
+                <!-- Ontario News -->
+                <a href="https://www.cbc.ca/news/canada/toronto" target="_blank" class="action-btn cbc-news">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <span>CBC Toronto News</span>
+                    <span class="link-url">cbc.ca/toronto</span>
+                </a>
+                
+                <!-- Windsor News -->
+                <a href="https://windsor.ctvnews.ca/" target="_blank" class="action-btn windsor-news">
+                    <i class="fas fa-city"></i>
+                    <span>CTV Windsor News</span>
+                    <span class="link-url">ctvnews.ca/windsor</span>
+                </a>
+                
+                <!-- Arabic News -->
+                <a href="https://www.aljazeera.net/" target="_blank" class="action-btn arabic-news">
+                    <i class="fas fa-language"></i>
+                    <span>Al Jazeera Arabic</span>
+                    <span class="link-url">aljazeera.net</span>
+                </a>
+                                 
+          </div>
+
+        </div>
+
+
+ <!-- Community Stats Card -->
             <div class="grid-card stats-card">
                 <div class="card-header">
                     <i class="fas fa-users"></i>
@@ -503,7 +582,13 @@
                     </div>
                 </div>
             </div>
-        </aside>
+
+              
+
+       </aside>
+
+
+
         
         <!-- Main Content Grid -->
         <section class="main-content-grid">
@@ -589,110 +674,116 @@
                 </div>
             </section>
 
-            <!-- Canada-Yemen Section -->
-            <section id="canada-yemen" class="content-section bg-alt">
-                <div class="section-header">
-                    <h2><i class="fas fa-handshake"></i> Canada & Yemen Relations</h2>
-                    <p class="section-subtitle">Services and Connections</p>
+
+
+
+          <!-- Canada-Yemen Section - MOBILE OPTIMIZED -->
+<section id="canada-yemen" class="content-section bg-alt">
+    <div class="section-header">
+        <h2><i class="fas fa-handshake"></i> Canada & Yemen Relations</h2>
+        <p class="section-subtitle">Services and Connections</p>
+    </div>
+    
+    <div class="services-mobile-grid">
+        <!-- Travel Advisory Card -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon travel">
+                    <i class="fas fa-plane-departure"></i>
                 </div>
-                
-                <div class="services-mobile-grid">
-                    <!-- Travel Advisory Card -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon travel">
-                                <i class="fas fa-plane-departure"></i>
-                            </div>
-                            <h3>Travel Advisory Updates</h3>
-                            <span class="service-status status-danger">Avoid Travel</span>
-                        </div>
-                        <div class="service-content">
-                            <p><strong>Canada → Yemen:</strong> Avoid all travel due to ongoing conflict and security risks.</p>
-                            <p><strong>Yemen → Canada:</strong> Visa required, connect via third countries.</p>
-                            <div class="service-links">
-                                <a href="https://travel.gc.ca/destinations/yemen" target="_blank" class="service-link">
-                                    <i class="fas fa-external-link-alt"></i> Official Travel Advisory
-                                </a>
-                                <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank" class="service-link">
-                                    <i class="fas fa-file-alt"></i> Visit Canada Requirements
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Emergency Contacts Card -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon emergency">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <h3>Emergency Contacts</h3>
-                            <span class="service-status status-warning">Tap to Call</span>
-                        </div>
-                        <div class="service-content">
-                            <div class="contact-list-mobile">
-                                <a href="tel:911" class="contact-item emergency-call">
-                                    <i class="fas fa-ambulance"></i>
-                                    <div>
-                                        <strong>911 Emergency</strong>
-                                        <span>Police, Fire, Ambulance</span>
-                                    </div>
-                                </a>
-                                <a href="tel:16137894477" class="contact-item">
-                                    <i class="fas fa-flag"></i>
-                                    <div>
-                                        <strong>Yemeni Embassy</strong>
-                                        <span>(613) 789-4477</span>
-                                    </div>
-                                </a>
-                                <a href="tel:16139968885" class="contact-item">
-                                    <i class="fas fa-globe-americas"></i>
-                                    <div>
-                                        <strong>Global Affairs</strong>
-                                        <span>1-613-996-8885</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Document Services Card -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon documents">
-                                <i class="fas fa-file-alt"></i>
-                            </div>
-                            <h3>Document Services</h3>
-                            <span class="service-status status-info">Assistance Available</span>
-                        </div>
-                        <div class="service-content">
-                            <div class="doc-services-list">
-                                <div class="doc-service">
-                                    <strong><i class="fas fa-passport"></i> Yemeni Passports</strong>
-                                    <a href="https://www.yemenembassy.ca/eng/" target="_blank">Yemeni Embassy Ottawa</a>
-                                </div>
-                                <div class="doc-service">
-                                    <strong><i class="fas fa-file-contract"></i> Canadian Documents</strong>
-                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html" target="_blank">Service Canada</a>
-                                </div>
-                                <div class="doc-service">
-                                    <strong><i class="fas fa-globe-americas"></i> Visas & Permits</strong>
-                                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank">IRCC Online</a>
-                                </div>
-                            </div>
-                            <div class="service-note">
-                                <i class="fas fa-info-circle"></i> YCC provides assistance with document translation and notarization
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section-footer">
-                    <a href="https://www.international.gc.ca/country-pays/yemen/index.aspx?lang=eng" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-external-link-alt"></i> Access Full Services Portal
+                <h3>Travel Advisory Updates</h3>
+                <span class="service-status status-danger">Avoid Travel</span>
+            </div>
+            <div class="service-content">
+                <p><strong>Canada → Yemen:</strong> Avoid all travel due to ongoing conflict and security risks.</p>
+                <p><strong>Yemen → Canada:</strong> Visa required, connect via third countries.</p>
+                <div class="service-links">
+                    <a href="https://travel.gc.ca/destinations/yemen" target="_blank" class="service-link">
+                        <i class="fas fa-external-link-alt"></i> Official Travel Advisory
+                    </a>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank" class="service-link">
+                        <i class="fas fa-file-alt"></i> Visit Canada Requirements
                     </a>
                 </div>
-            </section>
+            </div>
+        </div>
+        
+        <!-- Emergency Contacts Card -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon emergency">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3>Emergency Contacts</h3>
+                <span class="service-status status-warning">Tap to Call</span>
+            </div>
+            <div class="service-content">
+                <div class="contact-list-mobile">
+                    <a href="tel:911" class="contact-item emergency-call">
+                        <i class="fas fa-ambulance"></i>
+                        <div>
+                            <strong>911 Emergency</strong>
+                            <span>Police, Fire, Ambulance</span>
+                        </div>
+                    </a>
+                    <a href="tel:16137894477" class="contact-item">
+                        <i class="fas fa-flag"></i>
+                        <div>
+                            <strong>Yemeni Embassy</strong>
+                            <span>(613) 789-4477</span>
+                        </div>
+                    </a>
+                    <a href="tel:16139968885" class="contact-item">
+                        <i class="fas fa-globe-americas"></i>
+                        <div>
+                            <strong>Global Affairs</strong>
+                            <span>1-613-996-8885</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Document Services Card -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon documents">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Document Services</h3>
+                <span class="service-status status-info">Assistance Available</span>
+            </div>
+            <div class="service-content">
+                <div class="doc-services-list">
+                    <div class="doc-service">
+                        <strong><i class="fas fa-passport"></i> Yemeni Passports</strong>
+                        <a href="https://www.yemenembassy.ca/eng/" target="_blank">Yemeni Embassy Ottawa</a>
+                    </div>
+                    <div class="doc-service">
+                        <strong><i class="fas fa-file-contract"></i> Canadian Documents</strong>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html" target="_blank">Service Canada</a>
+                    </div>
+                    <div class="doc-service">
+                        <strong><i class="fas fa-globe-americas"></i> Visas & Permits</strong>
+                        <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank">IRCC Online</a>
+                    </div>
+                </div>
+                <div class="service-note">
+                    <i class="fas fa-info-circle"></i> YCC provides assistance with document translation and notarization
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-footer">
+        <a href="https://www.international.gc.ca/country-pays/yemen/index.aspx?lang=eng" target="_blank" class="btn btn-primary">
+            <i class="fas fa-external-link-alt"></i> Access Full Services Portal
+        </a>
+    </div>
+</section>
+
+
+
 
             <!-- News Section -->
             <section id="news" class="content-section">
@@ -718,20 +809,20 @@
                     </div>
                     
                     <div class="news-card">
-                        <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop&q=80')"></div>
-                        <div class="news-tag">Community</div>
-                        <div class="news-content">
-                            <h3>Community Events in Windsor</h3>
-                            <p>Upcoming cultural festivals and community gatherings in the Windsor area for all ages.</p>
-                            <div class="news-meta">
-                                <span class="news-source">Global News</span>
-                                <span class="news-date">Nov 28, 2025</span>
-                            </div>
-                            <a href="https://globalnews.ca/tag/windsor/" target="_blank" class="btn btn-small">
-                                Read Article <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
+    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop&q=80')"></div>
+    <div class="news-tag">Community</div>
+    <div class="news-content">
+        <h3>Community Events in Windsor</h3>
+        <p>Upcoming cultural festivals and community gatherings in the Windsor area for all ages.</p>
+        <div class="news-meta">
+            <span class="news-source">Global News</span>
+            <span class="news-date">Nov 28, 2025</span>
+        </div>
+        <a href="https://globalnews.ca/tag/windsor/" target="_blank" class="btn btn-small">
+            Read Article <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
                     
                     <div class="news-card">
                         <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
@@ -840,6 +931,11 @@
                     </div>
                 </div>
             </section>
+
+
+
+
+
 
             <!-- Events Section -->
             <section id="events" class="content-section">
@@ -970,34 +1066,40 @@
         </section>
     </main>
 
-    <!-- Google Analytics Powered Counter -->
-    <div class="ga-counter">
-        <div class="ga-badge">
-            <i class="fab fa-google"></i>
-            <span>Analytics</span>
-        </div>
-        <div class="ga-content">
-            <h4>Website Analytics Active</h4>
-            <p>Visitor tracking enabled with Google Analytics</p>
-            <div class="ga-stats">
-                <div class="ga-stat">
-                    <span class="ga-number" id="gaLive">--</span>
-                    <span class="ga-label">Live</span>
-                </div>
-                <div class="ga-stat">
-                    <span class="ga-number" id="gaTotal">--</span>
-                    <span class="ga-label">Total</span>
-                </div>
-                <div class="ga-stat">
-                    <span class="ga-number" id="gaToday">--</span>
-                    <span class="ga-label">Today</span>
-                </div>
-            </div>
-            <small>Tracking ID: G-ELL8Q26FH0</small>
-        </div>
-    </div>
+
     
-    <!-- Footer -->
+<!-- Google Analytics Powered Counter -->
+<div class="ga-counter">
+    <div class="ga-badge">
+        <i class="fab fa-google"></i>
+        <span>Analytics</span>
+    </div>
+    <div class="ga-content">
+        <h4>Website Analytics Active</h4>
+        <p>Visitor tracking enabled with Google Analytics</p>
+        <div class="ga-stats">
+            <div class="ga-stat">
+                <span class="ga-number" id="gaLive">--</span>
+                <span class="ga-label">Live</span>
+            </div>
+            <div class="ga-stat">
+                <span class="ga-number" id="gaTotal">--</span>
+                <span class="ga-label">Total</span>
+            </div>
+            <div class="ga-stat">
+                <span class="ga-number" id="gaToday">--</span>
+                <span class="ga-label">Today</span>
+            </div>
+        </div>
+        <small>Tracking ID: G-ELL8Q26FH0</small>
+    </div>
+</div>
+
+
+
+    
+    
+        <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-grid">
             <div class="footer-col logo-col">
@@ -1063,12 +1165,24 @@
             </div>
         </div>
         
-        <div class="footer-bottom" style="margin: 0 auto; text-align: center; padding: 20px 0; width: fit-content;">
-            <p style="margin: 5px 0;">&copy; 2025 Yemeni Canadian Council (YCC). All rights reserved.</p>
-            <p style="margin: 5px 0;">Published: November 30, 2025 | Last Updated: <span id="currentDate"></span></p>
-            <p style="margin: 5px 0;">Designed, Developed, and Managed By: Omar Sabri</p>
+        
+        
+        
+        
+        
+        
+    <div class="footer-bottom" style="margin: 0 auto; text-align: center; padding: 20px 0; width: fit-content;">
+    <p style="margin: 5px 0;">&copy; 2025 Yemeni Canadian Council (YCC). All rights reserved.</p>
+    <p style="margin: 5px 0;">Published: November 30, 2025 | Last Updated: <span id="currentDate"></span></p>
+    <p style="margin: 5px 0;">Designed, Developed, and Managed By: Omar Sabri</p>
+</div>    
+        
         </div>
     </footer>
+
+
+
+
 
     <!-- Donation Modal -->
     <div id="donationModal" class="modal">
@@ -1094,213 +1208,132 @@
         </div>
     </div>
 
-    <!-- PWA Installation Script -->
+
+
+
+
     <script>
-        // PWA Installation for English version
-        let deferredPrompt;
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    const body = document.body;
+    
+    if (menuToggle && mainNav) {
+        // Create hamburger icon bars
+        menuToggle.innerHTML = `
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        `;
         
-        // Listen for install prompt
-        window.addEventListener('beforeinstallprompt', (e) => {
-            console.log('PWA install prompt received on English page');
-            e.preventDefault();
-            deferredPrompt = e;
+        // Toggle menu on click
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            body.classList.toggle('menu-open');
             
-            // Show button after 2 seconds
-            setTimeout(() => {
-                const installBtn = document.getElementById('installAppBtn');
-                if (installBtn) {
-                    installBtn.style.display = 'flex';
-                    installBtn.style.animation = 'fadeIn 0.5s ease';
-                    console.log('Install button shown on English page');
-                    
-                    // Auto-hide after 20 seconds
-                    setTimeout(() => {
-                        if (installBtn.style.display === 'flex') {
-                            installBtn.style.opacity = '0.5';
-                            setTimeout(() => {
-                                installBtn.style.display = 'none';
-                            }, 500);
-                        }
-                    }, 20000);
-                }
-            }, 2000);
-        });
-        
-        // Install button click handler
-        document.getElementById('installAppBtn').addEventListener('click', async () => {
-            if (!deferredPrompt) {
-                console.log('No install prompt available');
-                return;
-            }
-            
-            console.log('Showing install prompt from English page...');
-            deferredPrompt.prompt();
-            
-            const { outcome } = await deferredPrompt.userChoice;
-            
-            if (outcome === 'accepted') {
-                console.log('User accepted installation from English page');
-                const installBtn = document.getElementById('installAppBtn');
-                installBtn.innerHTML = '<i class="fas fa-check"></i> Installed!';
-                installBtn.style.background = '#4CAF50';
-                setTimeout(() => {
-                    installBtn.style.display = 'none';
-                }, 2000);
+            // Prevent scrolling when menu is open
+            if (mainNav.classList.contains('active')) {
+                body.style.overflow = 'hidden';
             } else {
-                console.log('User dismissed installation');
-            }
-            
-            deferredPrompt = null;
-        });
-        
-        // Track app installation
-        window.addEventListener('appinstalled', () => {
-            console.log('PWA was installed from English page');
-            localStorage.setItem('yccAppInstalled', 'true');
-            
-            const installBtn = document.getElementById('installAppBtn');
-            if (installBtn) {
-                installBtn.style.display = 'none';
+                body.style.overflow = '';
             }
         });
         
-        // Check if already installed
-        if (window.matchMedia('(display-mode: standalone)').matches || 
-            localStorage.getItem('yccAppInstalled') === 'true') {
-            document.getElementById('installAppBtn').style.display = 'none';
-        }
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                body.classList.remove('menu-open');
+                body.style.overflow = '';
+            }
+        });
         
-        // Register Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('../service-worker.js')
-                    .then(registration => {
-                        console.log('Service Worker registered for English:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('Service Worker registration failed:', error);
-                    });
-            });
-        }
-    </script>
-
-    <!-- Mobile Menu Toggle Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mainNav = document.querySelector('.main-nav');
-            const body = document.body;
-            
-            if (menuToggle && mainNav) {
-                // Create hamburger icon bars
-                menuToggle.innerHTML = `
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                `;
-                
-                // Toggle menu on click
-                menuToggle.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    mainNav.classList.toggle('active');
-                    menuToggle.classList.toggle('active');
-                    body.classList.toggle('menu-open');
-                    
-                    // Prevent scrolling when menu is open
-                    if (mainNav.classList.contains('active')) {
-                        body.style.overflow = 'hidden';
-                    } else {
-                        body.style.overflow = '';
-                    }
-                });
-                
-                // Close menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-                        mainNav.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                        body.classList.remove('menu-open');
-                        body.style.overflow = '';
-                    }
-                });
-                
-                // Close menu when clicking on a link
-                mainNav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        mainNav.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                        body.classList.remove('menu-open');
-                        body.style.overflow = '';
-                    });
-                });
-                
-                // Close menu on ESC key
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape') {
-                        mainNav.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                        body.classList.remove('menu-open');
-                        body.style.overflow = '';
-                    }
-                });
-            }
-            
-            // Adjust menu for window resize
-            function adjustMenuForScreen() {
-                if (window.innerWidth > 992) {
-                    // Desktop - always show menu
-                    if (mainNav) mainNav.style.display = 'flex';
-                    if (menuToggle) menuToggle.style.display = 'none';
-                    body.style.overflow = '';
-                } else {
-                    // Mobile - hide menu by default, show toggle button
-                    if (mainNav) mainNav.style.display = 'none';
-                    if (menuToggle) menuToggle.style.display = 'block';
-                }
-            }
-            
-            // Run on load and resize
-            window.addEventListener('load', adjustMenuForScreen);
-            window.addEventListener('resize', adjustMenuForScreen);
-            adjustMenuForScreen();
-        });
-    </script>
-
-    <!-- Language Button Script -->
-    <script>
-        function setActiveLanguageButton() {
-            const isArabic = window.location.href.includes('/Arabic/');
-            const buttons = document.querySelectorAll('.lang-switch-btn');
-            
-            buttons.forEach(btn => {
-                const lang = btn.getAttribute('data-lang');
-                if (lang) {
-                    if ((lang === 'ar' && isArabic) || (lang === 'en' && !isArabic)) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
-                }
-            });
-        }
-
-        // Make sure Arabic button also updates localStorage
-        document.addEventListener('DOMContentLoaded', function() {
-            setActiveLanguageButton();
-            
-            // Add click handler for Arabic button
-            document.querySelector('[data-lang="ar"]').addEventListener('click', function(e) {
-                localStorage.setItem('preferredLang', 'ar');
-            });
-            
-            // Add click handler for English button  
-            document.querySelector('[data-lang="en"]').addEventListener('click', function(e) {
-                localStorage.setItem('preferredLang', 'en');
+        // Close menu when clicking on a link
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                body.classList.remove('menu-open');
+                body.style.overflow = '';
             });
         });
-    </script>
+        
+        // Close menu on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                body.classList.remove('menu-open');
+                body.style.overflow = '';
+            }
+        });
+    }
+    
+    // Adjust menu for window resize
+    function adjustMenuForScreen() {
+        if (window.innerWidth > 992) {
+            // Desktop - always show menu
+            if (mainNav) mainNav.style.display = 'flex';
+            if (menuToggle) menuToggle.style.display = 'none';
+            body.style.overflow = '';
+        } else {
+            // Mobile - hide menu by default, show toggle button
+            if (mainNav) mainNav.style.display = 'none';
+            if (menuToggle) menuToggle.style.display = 'block';
+        }
+    }
+    
+    // Run on load and resize
+    window.addEventListener('load', adjustMenuForScreen);
+    window.addEventListener('resize', adjustMenuForScreen);
+    adjustMenuForScreen();
+});
+</script>
 
-    <!-- Main Script -->
+    
     <script src="script.js"></script>
-</body>
+
+
+
+
+
+    <script>
+    function setActiveLanguageButton() {
+        const isArabic = window.location.href.includes('/Arabic/');
+        const buttons = document.querySelectorAll('.lang-switch-btn');
+        
+        buttons.forEach(btn => {
+            const lang = btn.getAttribute('data-lang');
+            if (lang) {
+                if ((lang === 'ar' && isArabic) || (lang === 'en' && !isArabic)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            }
+        });
+    }
+
+    // Make sure Arabic button also updates localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        setActiveLanguageButton();
+        
+        // Add click handler for Arabic button
+        document.querySelector('[data-lang="ar"]').addEventListener('click', function(e) {
+            localStorage.setItem('preferredLang', 'ar');
+        });
+        
+        // Add click handler for English button  
+        document.querySelector('[data-lang="en"]').addEventListener('click', function(e) {
+            localStorage.setItem('preferredLang', 'en');
+        });
+    });
+</script>
+
+
+    </body>
 </html>
