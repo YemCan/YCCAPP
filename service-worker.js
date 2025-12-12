@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ycc-v2';  // Changed version to force update
+const CACHE_NAME = 'ycc-v2';  // Changed version
 const urlsToCache = [
   './',
   './index.html',
@@ -20,5 +20,19 @@ const urlsToCache = [
   './icons/android-launchericon-72-72.png',
   './icons/android-launchericon-512-512.png'
 ];
+// ... rest of code remains same
 
-// ... rest of service worker code remains same
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
+  );
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
+  );
+});
+
