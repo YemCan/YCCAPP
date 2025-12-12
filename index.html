@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <meta name="googlebot" content="notranslate">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2c5aa0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#2c5aa0">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="icons/android/android-launchericon-192-192.png">
+    <link rel="apple-touch-icon" href="icons/android/android-launchericon-192-192.png">
+    
+    <title>Yemeni Canadian Council</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6e 100%);
+            color: white;
+            position: relative;
+        }
+        
+        .redirect-message {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .language-options {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .language-options p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        /* LANGUAGE BUTTONS */
+        .language-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .lang-icon {
+            font-weight: bold;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        /* Install App Button */
+        #installBtn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c5aa0;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+            min-width: 140px;
+        }
+        
+        #installBtn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            #installBtn {
+                top: 15px;
+                right: 15px;
+                padding: 8px 16px;
+                font-size: 13px;
+                min-width: 120px;
+            }
+            
+            .language-buttons {
+                gap: 15px;
+            }
+            
+            .lang-btn {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+            
+            .redirect-message {
+                padding: 0 20px;
+            }
+        }
+        
+        /* Manual override button */
+        .manual-override {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .manual-override a {
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .pwa-install-note {
+            margin-top: 20px;
+            font-size: 13px;
+            opacity: 0.7;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-message">
+        <div class="spinner"></div>
+        <h2 id="statusText">Redirecting to English Version...</h2>
+        <p>Yemeni Canadian Council - Windsor</p>
+        
+        <div class="language-options" id="languageOptions" style="display: none;">
+            <p>Select your preferred language:</p>
+            <div class="language-buttons">
+                <button class="lang-btn" onclick="setLanguage('en')">
+                    <span class="lang-icon">EN</span>
+                    <span>English</span>
+                </button>
+                <button class="lang-btn" onclick="setLanguage('ar')">
+                    <span class="lang-icon">AR</span>
+                    <span>العربية</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="pwa-install-note" id="pwaNote" style="display: none;">
+            <p>💡 <strong>Install our app!</strong> Click the "Install App" button at the top-right before redirecting.</p>
+        </div>
+        
+        <div class="manual-override">
+            <p>If not redirected automatically, <a href="#" onclick="showLanguageOptions()">click here to choose language</a></p>
+        </div>
+    </div>
+    
+    <!-- Install App Button -->
+    <button id="installBtn">
+        <span>📱</span>
+        Install App
+    </button>
+    
+    <script>
+    // Global variables
+    let deferredPrompt = null;
+    let redirectTimer = null;
+    let installOptionShown = false;
+    
+    // Show language options
+    function showLanguageOptions() {
+        document.getElementById('languageOptions').style.display = 'block';
+        document.querySelector('.manual-override').style.display = 'none';
+        document.getElementById('statusText').textContent = 'Select Language';
+        clearTimeout(redirectTimer);
+        return false;
+    }
+    
+    // Language functions
+    function setLanguage(lang) {
+        localStorage.setItem('preferredLang', lang);
+        window.location.href = lang === 'ar' ? 'Arabic/index.html' : 'English/index.html';
+    }
+    
+    // Function to perform redirect
+    function performRedirect() {
+        const savedLang = localStorage.getItem('preferredLang');
+        const browserLang = navigator.language || navigator.userLanguage;
+        
+        if (savedLang === 'ar') {
+            window.location.href = 'Arabic/index.html';
+        } else if (browserLang.startsWith('ar') && !savedLang) {
+            document.getElementById('languageOptions').style.display = 'block';
+            document.querySelector('.manual-override').style.display = 'none';
+            document.getElementById('statusText').textContent = 'اختر اللغة / Choose Language';
+            document.querySelector('p').innerHTML = 'Yemeni Canadian Council - Windsor<br>المجلس اليمني الكندي - وندسور';
+        } else {
+            localStorage.setItem('preferredLang', 'en');
+            window.location.href = 'English/index.html';
+        }
+    }
+    
+    // PWA Installation Logic
+    window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('✅ PWA install prompt received!');
+        e.preventDefault();
+        deferredPrompt = e;
+        installOptionShown = true;
+        
+        // STOP THE REDIRECT TIMER
+        clearTimeout(redirectTimer);
+        
+        // Show install button immediately
+        const installBtn = document.getElementById('installBtn');
+        installBtn.style.display = 'flex';
+        installBtn.style.animation = 'fadeIn 0.5s ease';
+        
+        // Update message
+        document.getElementById('statusText').textContent = 'Click "Install App" button above!';
+        document.getElementById('pwaNote').innerHTML = '<p>📱 <strong>Install available!</strong> Click the button at top-right to install YCC app.</p>';
+        document.getElementById('pwaNote').style.display = 'block';
+        
+        console.log('✅ Install button shown - redirect stopped');
+    });
+    
+    // Install button click handler
+    document.getElementById('installBtn').addEventListener('click', async () => {
+        console.log('Install button clicked');
+        
+        if (!deferredPrompt) {
+            alert('Install option will appear soon. Please wait...');
+            return;
+        }
+        
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+            console.log('✅ User accepted installation');
+            const installBtn = document.getElementById('installBtn');
+            installBtn.innerHTML = '<span>✅</span> Installed!';
+            installBtn.style.background = '#4CAF50';
+            installBtn.style.color = 'white';
+            
+            // Short delay then go to English
+            setTimeout(() => {
+                localStorage.setItem('preferredLang', 'en');
+                window.location.href = 'English/index.html';
+            }, 1500);
+        } else {
+            console.log('User dismissed installation');
+            // Continue to English after dismissal
+            setTimeout(() => {
+                localStorage.setItem('preferredLang', 'en');
+                window.location.href = 'English/index.html';
+            }, 1000);
+        }
+        
+        deferredPrompt = null;
+    });
+    
+    // Track app installation
+    window.addEventListener('appinstalled', () => {
+        console.log('✅ PWA was installed');
+        localStorage.setItem('yccAppInstalled', 'true');
+    });
+    
+    // Check if already installed
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        document.getElementById('installBtn').style.display = 'none';
+        document.getElementById('pwaNote').innerHTML = '<p>✅ <strong>App is already installed!</strong></p>';
+        document.getElementById('pwaNote').style.display = 'block';
+    }
+    
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('✅ Service Worker registered');
+                });
+        });
+    }
+    
+    // Start redirect timer (ONLY if no install option appears)
+    document.addEventListener('DOMContentLoaded', function() {
+        redirectTimer = setTimeout(() => {
+            // Only redirect if install option hasn't appeared
+            if (!installOptionShown) {
+                console.log('No install option, redirecting...');
+                performRedirect();
+            } else {
+                console.log('Install option shown - redirect cancelled');
+            }
+        }, 5000); // Wait 5 seconds before redirect
+    });
+</script>
+</body>
+</html>
