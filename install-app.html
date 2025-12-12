@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c5aa0">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/android/android-launchericon-192-192.png">
+    <title>Install YCC App</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6e 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 25px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #2c5aa0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        #installBtn {
+            background: white;
+            color: #2c5aa0;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        #installBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        #installBtn i {
+            font-size: 22px;
+        }
+        
+        .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .instructions h3 {
+            margin-top: 0;
+        }
+        
+        .back-link {
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        
+        .back-link a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="app-icon">
+            YCC
+        </div>
+        
+        <h1>Yemeni Canadian Council App</h1>
+        <p class="subtitle">Install our app for quick access to community resources</p>
+        
+        <button id="installBtn">
+            <i class="fas fa-download"></i>
+            Install YCC App Now
+        </button>
+        
+        <div id="status"></div>
+        
+        <div class="instructions">
+            <h3>📱 Installation Guide:</h3>
+            <p><strong>For Mobile:</strong> Tap "Install" then "Add to Home Screen"</p>
+            <p><strong>For Desktop:</strong> Click "Install" to add to your applications</p>
+            <p><strong>Benefits:</strong> Fast access, works offline, no app store required</p>
+        </div>
+        
+        <div class="back-link">
+            <a href="English/index.html">Go to English Website</a> • 
+            <a href="Arabic/index.html">Go to Arabic Website</a>
+        </div>
+    </div>
+    
+    <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+    const statusDiv = document.getElementById('status');
+    
+    // ALWAYS show install button after 2 seconds
+    setTimeout(() => {
+        if (!deferredPrompt) {
+            console.log('No install prompt received, showing button anyway');
+            installBtn.style.display = 'inline-flex';
+            installBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> Try Manual Installation';
+            installBtn.style.background = '#ff9800';
+            
+            installBtn.onclick = () => {
+                // Try multiple installation methods
+                tryManualInstall();
+            };
+        }
+    }, 2000);
+    
+    // Show install prompt when available
+    window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('✅ Install prompt received');
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Show install button
+        installBtn.style.display = 'inline-flex';
+        installBtn.innerHTML = '<i class="fas fa-download"></i> Install YCC App Now';
+        installBtn.style.background = 'white';
+        statusDiv.innerHTML = '<p style="color:#4CAF50">✅ Ready to install!</p>';
+        
+        // Update button click handler
+        installBtn.onclick = async () => {
+            if (!deferredPrompt) return;
+            
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            
+            if (outcome === 'accepted') {
+                showSuccess();
+            } else {
+                statusDiv.innerHTML = '<p style="color:#ff9800">Installation cancelled.</p>';
+            }
+            
+            deferredPrompt = null;
+        };
+    });
+    
+    // Manual installation function
+    function tryManualInstall() {
+        statusDiv.innerHTML = `
+            <div style="background:rgba(0,0,0,0.3);padding:15px;border-radius:10px;margin:15px 0;">
+                <h4 style="margin-top:0;">📱 How to Install Manually:</h4>
+                <ol style="text-align:left;">
+                    <li><strong>For Chrome/Edge Desktop:</strong>
+                        <ul>
+                            <li>Click the <strong>install icon (📱)</strong> in address bar</li>
+                            <li>Or click <strong>⋮ menu → "Install Yemeni Canadian Council"</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>For Mobile:</strong>
+                        <ul>
+                            <li>Tap <strong>Share button (📤)</strong> → "Add to Home Screen"</li>
+                            <li>Or tap <strong>⋮ menu → "Install App"</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>Alternative:</strong> Visit <a href="English/index.html" style="color:#90caf9;">English website</a> and try installing from there</li>
+                </ol>
+                <button onclick="testInstall()" style="background:#4CAF50;color:white;border:none;padding:8px 15px;border-radius:5px;margin:5px;">
+                    Test PWA Features
+                </button>
+            </div>
+        `;
+    }
+    
+    // Test function
+    function testInstall() {
+        statusDiv.innerHTML += `
+            <div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:5px;margin:10px 0;font-size:12px;">
+                <strong>PWA Test Results:</strong><br>
+                HTTPS/localhost: ${location.protocol === 'https:' || location.hostname === 'localhost' ? '✅' : '❌'}<br>
+                Service Worker: ${'serviceWorker' in navigator ? '✅' : '❌'}<br>
+                Manifest: ${document.querySelector('link[rel="manifest"]') ? '✅' : '❌'}<br>
+                Display Mode: ${window.matchMedia('(display-mode: standalone)').matches ? '✅ Already installed!' : '❌ Not installed'}
+            </div>
+        `;
+    }
+    
+    // Success function
+    function showSuccess() {
+        statusDiv.innerHTML = `
+            <div style="background:#4CAF50;color:white;padding:20px;border-radius:10px;margin:20px 0;">
+                <h3 style="margin-top:0;">✅ App Installed Successfully!</h3>
+                <p>Opening Yemeni Canadian Council app...</p>
+            </div>
+        `;
+        installBtn.innerHTML = '<i class="fas fa-check"></i> Installed!';
+        installBtn.style.background = '#4CAF50';
+        installBtn.style.color = 'white';
+        installBtn.disabled = true;
+        
+        setTimeout(() => {
+            window.location.href = 'English/index.html';
+        }, 2000);
+    }
+    
+    // Check if already installed
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        statusDiv.innerHTML = `
+            <div style="background:#4CAF50;color:white;padding:20px;border-radius:10px;margin:20px 0;">
+                <h3 style="margin-top:0;">✅ App Already Installed!</h3>
+                <p>Opening YCC app now...</p>
+            </div>
+        `;
+        installBtn.style.display = 'none';
+        
+        setTimeout(() => {
+            window.location.href = 'English/index.html';
+        }, 1500);
+    }
+    
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => {
+                    console.log('Service Worker registered:', reg.scope);
+                    statusDiv.innerHTML += `<p style="font-size:12px;opacity:0.7;">✅ Service Worker active</p>`;
+                })
+                .catch(err => {
+                    console.log('Service Worker error:', err);
+                    statusDiv.innerHTML += `<p style="font-size:12px;color:#ff9800;">❌ Service Worker failed: ${err.message}</p>`;
+                });
+        });
+    }
+</script>
+
+</body>
+</html>
