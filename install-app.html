@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#2c5aa0">
-    <link rel="manifest" href="manifest.json">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="YCC App">
+    <meta name="application-name" content="YCC App">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+    
+    <!-- Icons - ONE SET ONLY! -->
     <link rel="icon" href="icons/android/android-launchericon-192-192.png">
+    <link rel="apple-touch-icon" href="icons/android/android-launchericon-192-192.png">
+    <link rel="apple-touch-startup-image" href="icons/android/android-launchericon-512-512.png">
+    
     <title>Install YCC App</title>
     
     <style>
@@ -206,15 +220,15 @@
                     </li>
                     <li><strong>Alternative:</strong> Visit <a href="English/index.html" style="color:#90caf9;">English website</a> and try installing from there</li>
                 </ol>
-                <button onclick="testInstall()" style="background:#4CAF50;color:white;border:none;padding:8px 15px;border-radius:5px;margin:5px;">
+                <button onclick="window.testInstall()" style="background:#4CAF50;color:white;border:none;padding:8px 15px;border-radius:5px;margin:5px;">
                     Test PWA Features
                 </button>
             </div>
         `;
     }
     
-    // Test function
-    function testInstall() {
+    // Test function - make it global
+    window.testInstall = function() {
         statusDiv.innerHTML += `
             <div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:5px;margin:10px 0;font-size:12px;">
                 <strong>PWA Test Results:</strong><br>
@@ -273,6 +287,44 @@
                 });
         });
     }
+
+
+
+    // Add this to test local installation
+function testLocalInstall() {
+    console.log('🔧 Testing Local Installation');
+    console.log('URL:', window.location.href);
+    console.log('Protocol:', window.location.protocol);
+    console.log('Hostname:', window.location.hostname);
+    
+    // Force show install button for local testing
+    installBtn.style.display = 'inline-flex';
+    
+    // Create a fake install prompt for testing
+    if (window.location.hostname === 'localhost' || 
+        window.location.hostname === '127.0.0.1') {
+        console.log('🔄 Running on localhost - showing manual install');
+        
+        installBtn.innerHTML = '<i class="fas fa-desktop"></i> Install on This Computer';
+        installBtn.style.background = '#2196F3';
+        
+        installBtn.onclick = () => {
+            statusDiv.innerHTML = `
+                <div style="background:#2196F3;color:white;padding:15px;border-radius:10px;margin:15px 0;">
+                    <h4 style="margin-top:0;">💻 Install on Your Computer:</h4>
+                    <ol style="text-align:left;">
+                        <li><strong>Chrome:</strong> Click ⋮ menu → "Install Yemeni Canadian Council"</li>
+                        <li><strong>Edge:</strong> Click ⋮ menu → "Apps" → "Install this site as an app"</li>
+                        <li><strong>Create shortcut:</strong> Drag the tab to your desktop</li>
+                    </ol>
+                </div>
+            `;
+        };
+    }
+}
+
+// Call it on page load
+window.addEventListener('load', testLocalInstall);
 </script>
 
 </body>
