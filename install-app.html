@@ -325,6 +325,39 @@ function testLocalInstall() {
 
 // Call it on page load
 window.addEventListener('load', testLocalInstall);
+
+
+
+
+// Add this button after line 85 (before the instructions div)
+const forceInstallBtn = document.createElement('button');
+forceInstallBtn.innerHTML = '💻 CLICK HERE TO INSTALL ON COMPUTER';
+forceInstallBtn.style.cssText = `
+    background: #2196F3;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px 0;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+    display: block;
+    width: 80%;
+    max-width: 400px;
+`;
+forceInstallBtn.onclick = () => {
+    alert('TO INSTALL:\n\n1. Click the ⋮ menu (top-right of Chrome)\n2. Select "Install Yemeni Canadian Council"\n3. OR Look for 📱 icon in address bar\n\nAfter installation, app will appear in Start Menu!');
+    
+    // Try to trigger browser menu
+    if (window.chrome && chrome.app) {
+        chrome.app.install();
+    }
+};
+
+// Add to page
+document.querySelector('.container').insertBefore(forceInstallBtn, document.querySelector('.instructions'));
 </script>
 
 </body>
