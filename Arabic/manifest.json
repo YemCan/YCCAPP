@@ -1,0 +1,33 @@
+{
+  "name": "المجلس اليمني الكندي",
+  "short_name": "المجلس اليمني",
+  "description": "ربط ودعم المجلس اليمني في وندسور، أونتاريو.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#2c5aa0",
+  "theme_color": "#2c5aa0",
+  "icons": [
+    {
+      "src": "../icons/40.png",
+      "sizes": "40x40",
+      "type": "image/png"
+    },
+    {
+      "src": "../icons/72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "../icons/120.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "../icons/256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ]
+}

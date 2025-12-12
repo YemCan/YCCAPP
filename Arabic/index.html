@@ -8,6 +8,8 @@
     <link rel="icon" type="image/png" href="logo2.png">
     <link rel="shortcut icon" href="logo2.png">
     <link rel="apple-touch-icon" href="logo2.png">
+
+    <link rel="manifest" href="manifest.json">
     
     <title>المجلس اليمني الكندي (YCC) - ويندسور</title>
 
@@ -1366,6 +1368,23 @@
     document.addEventListener('DOMContentLoaded', function() {
         setActiveLanguageButton();
     });
+</script>
+
+
+
+<!-- PWA Service Worker Registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      // The service worker is in the root directory (../sw.js relative to arabic/index.html)
+      navigator.serviceWorker.register('../sw.js')
+        .then(function(registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+  }
 </script>
 
 </body>
